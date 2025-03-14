@@ -1,1 +1,109 @@
-<h><center>I love Rebekah</center></h>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebekah & Jonathan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <span class="logo-d">R</span>
+            <span class="logo-wreath"></span>
+            <span class="logo-m">J</span>
+        </div>
+        <h1>Rebekah & Jonathan</h1>
+        <p class="date-location">SATURDAY, JUNE 28, 2025 <span class="separator"></span> PAYSON, UT</p>
+        <p class="countdown" id="countdown">Loading...</p>
+    </header>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Photos</a></li>
+            <li><a href="#">Q + A</a></li>
+            <li><a href="#">Registry</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="image-gallery">
+            <img src="images/gallery1.png" alt="Couple image">
+            <img src="images/gallery2.png" alt="Couple image">
+            <img src="images/gallery1.png" alt="Museum image">
+        </section>
+        <section id="rsvp" class="rsvp-form">
+            <h2>RSVP</h2>
+            <p>Please enter your name to begin the RSVP process.</p>
+            <div id="name-lookup">
+                <label for="guest-name-lookup">Full Name:</label>
+                <input type="text" id="guest-name-lookup">
+                <button type="button" id="lookup-button">Next</button>
+            </div>
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSfSzV8Wk3f-dlMXIX4eeiNn62UFk_mJphwi7-qd1U7ogsil6A/formResponse" method="POST" id="rsvpForm" style="display:none;">
+                <div id="name-display-wrapper">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="entry.1118794439" required readonly style="display:none;">
+                    <span id="name-display" style="font-size: 1em; padding: 10px 0; display: block;"></span>
+                </div>
+                <div>
+                    <label>Will you be attending?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.928624325" value="Yes" required>
+                        Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.928624325" value="No">
+                        No
+                    </label>
+                </div>
+
+                <div id="idaho-question" style="display:none;">
+                    <label>Will you be attending the Idaho Gathering?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.1284767391" value="Yes">
+                        Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.1284767391" value="No">
+                        No
+                    </label>
+                </div>
+
+                <div id="friday-question" style="display:none;">
+                    <label>Will you be attending the Friday Gathering?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.1140344561" value="Yes">
+                        Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.1140344561" value="No">
+                        No
+                    </label>
+                </div>
+
+                <div>
+                    <label for="guests">Number of guests:</label>
+                    <input type="text" id="guests" name="entry.484301818">
+                </div>
+                <button type="submit">Submit RSVP</button>
+            </form>
+            <div id="rsvp-message" style="display:none;">
+                <p>Thank you for your RSVP!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="guests.js"></script>
+</body>
+</html>
