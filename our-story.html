@@ -28,9 +28,15 @@
         fetch('header.html')
             .then(response => response.text())
             .then(data => {
+                // Load header.html
                 document.getElementById('header-container').innerHTML = data;
+                // Load script.js after header is loaded
+                let script = document.createElement('script');
+                script.src = 'script.js';
+                // Dispatch event after script is loaded
+                script.onload = () => document.dispatchEvent(new Event('headerLoaded'));
+                document.body.appendChild(script);
             });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>

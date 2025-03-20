@@ -33,9 +33,11 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
-                document.dispatchEvent(new Event('headerLoaded'));
+                let script = document.createElement('script');
+                script.src = 'script.js';
+                script.onload = () => document.dispatchEvent(new Event('headerLoaded'));
+                document.body.appendChild(script);
             });
     </script>
-    <script src="script.js"></script>
 </body>
 </html> 

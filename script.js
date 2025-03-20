@@ -16,25 +16,11 @@ function initNavMenu() {
     const navLinks = document.querySelector('.nav-links');
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
     
-    if (!navLinks || !mobileMenuButton || navMenuInitialized) {
-        return;
-    }
-
-    console.log('Initializing mobile menu');
+    if (!navLinks || !mobileMenuButton) return;
     
-    // Add click event to mobile menu button
-    mobileMenuButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log('Mobile menu button clicked');
+    // Toggle menu on button click
+    mobileMenuButton.addEventListener('click', () => {
         navLinks.classList.toggle('open');
-    });
-
-    // Close menu when clicking links
-    navLinks.addEventListener('click', (e) => {
-        if (e.target.tagName === 'A') {
-            navLinks.classList.remove('open');
-        }
     });
 
     // Close menu when clicking outside
@@ -43,9 +29,6 @@ function initNavMenu() {
             navLinks.classList.remove('open');
         }
     });
-
-    // Mark as initialized
-    navMenuInitialized = true;
 }
 
 // Initialize countdown timer
@@ -54,60 +37,26 @@ function initCountdown() {
     if (!countdownElement) return;
 
     const eventDate = new Date('2025-06-28T00:00:00');
-    const now = new Date();
-    const diff = eventDate - now;
+    
+    function updateCountdown() {
+        const now = new Date();
+        const diff = eventDate - now;
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        countdownElement.textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds until we say "I do"!`;
+    }
 
-    countdownElement.textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds until we say "I do"!`;
+    // Initial update and set interval
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 }
 
-// Check and initialize components that might be loaded dynamically
-function checkAndInitializeComponents() {
-    console.log('Checking for components to initialize...');
-    
-    // If navigation components exist, initialize the nav menu
-    if (document.querySelector('.mobile-menu-button') && document.querySelector('.nav-links')) {
-        console.log('Found navigation components, initializing...');
-        initNavMenu();
-    }
-    
-    // If countdown exists, initialize it
-    if (document.getElementById('countdown')) {
-        initCountdown();
-    }
-}
-
-// Initialize everything when the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM loaded, initializing...');
-    checkAndInitializeComponents();
-    
-    // Set up observer to watch for dynamic content loading
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            if (mutation.addedNodes.length) {
-                console.log('DOM changed, checking components...');
-                checkAndInitializeComponents();
-            }
-        });
-    });
-    
-    // Start observing the body for changes
-    observer.observe(document.body, { 
-        childList: true, 
-        subtree: true 
-    });
-    
-    // Update countdown every second
-    setInterval(initCountdown, 1000);
-});
-
-// Legacy headerLoaded event support
+// Initialize everything when header is loaded
 document.addEventListener('headerLoaded', () => {
-    console.log('headerLoaded event fired');
-    checkAndInitializeComponents();
+    initNavMenu();
+    initCountdown();
 });
