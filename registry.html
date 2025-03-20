@@ -3,20 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rebekah & Jonathan</title>
+    <title>Registry - Rebekah & Jonathan</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤍</text></svg>">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <div id="header-container"></div>
 
     <main>
-        <section class="image-gallery">
-            <img src="images/gallery1.png" alt="Couple image">
-            <img src="images/gallery2.png" alt="Couple image">
-            <img src="images/gallery1.png" alt="Museum image">
+        <section class="registry-section">
+            <h2>Wedding Registry</h2>
+            <div class="registry-container">
+                <p>We are registered at the following locations:</p>
+                <div class="registry-links">
+                    <a href="#" class="registry-button">Target Registry</a>
+                    <a href="#" class="registry-button">Amazon Registry</a>
+                    <!-- Add more registry links as needed -->
+                </div>
+            </div>
         </section>
     </main>
 
@@ -25,9 +33,8 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
-                document.dispatchEvent(new Event('headerLoaded'));
             });
     </script>
     <script src="script.js"></script>
 </body>
-</html>
+</html> 

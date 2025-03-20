@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP - Rebekah & Jonathan</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤍</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="header-container"></div>
+
+    <main>
+        <section id="rsvp" class="rsvp-form">
+            <h2>RSVP</h2>
+            <p>Please enter your name to begin the RSVP process.</p>
+            <div id="name-lookup">
+                <label for="guest-name-lookup">Full Name:</label>
+                <input type="text" id="guest-name-lookup">
+                <button type="button" id="lookup-button">Next</button>
+            </div>
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSfSzV8Wk3f-dlMXIX4eeiNn62UFk_mJphwi7-qd1U7ogsil6A/formResponse" method="POST" id="rsvpForm" style="display:none;">
+                <div id="name-display-wrapper">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="entry.1118794439" required readonly style="display:none;">
+                    <span id="guest-name-display" style="font-size: 1em; padding: 10px 0; display: block;"></span>
+                </div>
+                <div>
+                    <label>Will you be attending?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.928624325" value="Yes" required>
+                        Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.928624325" value="No">
+                        No
+                    </label>
+                </div>
+
+                <div id="idaho-question" style="display:none;">
+                    <label>Will you be attending the Idaho Gathering?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.1284767391" value="Yes">
+                        Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.1284767391" value="No">
+                        No
+                    </label>
+                </div>
+
+                <div id="friday-question" style="display:none;">
+                    <label>Will you be attending the Friday Gathering?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.1140344561" value="Yes">
+                        Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.1140344561" value="No">
+                        No
+                    </label>
+                </div>
+
+                <div>
+                    <label for="guests">Number of guests:</label>
+                    <input type="text" id="guests" name="entry.484301818">
+                </div>
+                <button type="submit">Submit RSVP</button>
+            </form>
+            <div id="rsvp-message" style="display:none;">
+                <p>Thank you for your RSVP!</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                document.dispatchEvent(new Event('headerLoaded'));
+            });
+    </script>
+    <script src="guests.js"></script>
+    <script src="script.js"></script>
+    <script src="rsvp.js"></script>
+</body>
+</html> 

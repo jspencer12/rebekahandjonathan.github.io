@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos - Rebekah & Jonathan</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤍</text></svg>">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div id="header-container"></div>
+
+    <main>
+        <section class="photo-gallery">
+            <h2>Our Photo Gallery</h2>
+            <div class="gallery-grid">
+                <img src="images/gallery1.png" alt="Couple at museum">
+                <img src="images/gallery2.png" alt="Couple with umbrella">
+                <img src="images/gallery1.png" alt="Museum hallway">
+                <img src="images/gallery2.png" alt="Portrait in museum">
+                <img src="images/gallery1.png" alt="Standing by artwork">
+                <img src="images/gallery2.png" alt="Art gallery view">
+            </div>
+        </section>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-content">
+                <img class="lightbox-img" id="lightbox-img" src="" alt="Lightbox image">
+                <div class="lightbox-nav">
+                    <button class="lightbox-prev" id="lightbox-prev"><i class="fas fa-angle-left"></i></button>
+                    <button class="lightbox-close" id="lightbox-close"><i class="fas fa-times"></i></button>
+                    <button class="lightbox-next" id="lightbox-next"><i class="fas fa-angle-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                document.dispatchEvent(new Event('headerLoaded'));
+            });
+    </script>
+    <script src="script.js"></script>
+    <script src="gallery.js"></script>
+</body>
+</html> 
