@@ -8,49 +8,26 @@ const addSafeEventListener = (element, event, handler) => {
     }
 };
 
-// Initialize countdown timer
-function initializeCountdown() {
-    const countdownDisplay = getElement('countdown');
-    if (!countdownDisplay) return;
-
-    const eventDate = new Date("June 28, 2025 13:45:00").getTime();
-
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = eventDate - now;
-
-        if (distance < 0) {
-            countdownDisplay.textContent = "Event has passed!";
-            return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        countdownDisplay.textContent = `${days} DAYS, ${hours} HRS, ${minutes} MIN, ${seconds} SEC TO GO!`;
-    }
-
-    // Initial call to avoid delay
-    updateCountdown();
-    // Update every second
-    setInterval(updateCountdown, 1000);
-}
+// Flag to track if nav menu has been initialized
+let navMenuInitialized = false;
 
 // Initialize mobile navigation menu
 function initNavMenu() {
     const navLinks = document.querySelector('.nav-links');
     const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    if (!navLinks || !mobileMenuButton) return;
+    
+    if (!navLinks || !mobileMenuButton || navMenuInitialized) {
+        return;
+    }
 
+    console.log('Initializing mobile menu');
+    
     // Add click event to mobile menu button
-    mobileMenuButton.addEventListener('click', () => {
-        if (!navLinks.classList.contains('open')) {
-            navLinks.classList.add('open');
-        } else {
-            navLinks.classList.remove('open');
-        }
+    mobileMenuButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Mobile menu button clicked');
+        navLinks.classList.toggle('open');
     });
 
     // Close menu when clicking links
@@ -66,18 +43,71 @@ function initNavMenu() {
             navLinks.classList.remove('open');
         }
     });
+
+    // Mark as initialized
+    navMenuInitialized = true;
+}
+
+// Initialize countdown timer
+function initCountdown() {
+    const countdownElement = document.getElementById('countdown');
+    if (!countdownElement) return;
+
+    const eventDate = new Date('2025-06-28T00:00:00');
+    const now = new Date();
+    const diff = eventDate - now;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    countdownElement.textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds until we say "I do"!`;
+}
+
+// Check and initialize components that might be loaded dynamically
+function checkAndInitializeComponents() {
+    console.log('Checking for components to initialize...');
+    
+    // If navigation components exist, initialize the nav menu
+    if (document.querySelector('.mobile-menu-button') && document.querySelector('.nav-links')) {
+        console.log('Found navigation components, initializing...');
+        initNavMenu();
+    }
+    
+    // If countdown exists, initialize it
+    if (document.getElementById('countdown')) {
+        initCountdown();
+    }
 }
 
 // Initialize everything when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize navigation menu
-    initNavMenu();
-
-    // Initialize countdown timer
-    initializeCountdown();
+    console.log('DOM loaded, initializing...');
+    checkAndInitializeComponents();
+    
+    // Set up observer to watch for dynamic content loading
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.addedNodes.length) {
+                console.log('DOM changed, checking components...');
+                checkAndInitializeComponents();
+            }
+        });
+    });
+    
+    // Start observing the body for changes
+    observer.observe(document.body, { 
+        childList: true, 
+        subtree: true 
+    });
+    
+    // Update countdown every second
+    setInterval(initCountdown, 1000);
 });
 
-// Re-initialize countdown when header is loaded
+// Legacy headerLoaded event support
 document.addEventListener('headerLoaded', () => {
-    initializeCountdown();
+    console.log('headerLoaded event fired');
+    checkAndInitializeComponents();
 });

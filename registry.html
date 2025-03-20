@@ -33,6 +33,7 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
+                document.dispatchEvent(new Event('headerLoaded'));
             });
     </script>
     <script src="script.js"></script>
