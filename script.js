@@ -1,16 +1,3 @@
-// Helper function to safely get DOM elements
-const getElement = (id) => document.getElementById(id);
-
-// Helper function to safely add event listeners
-const addSafeEventListener = (element, event, handler) => {
-    if (element) {
-        element.addEventListener(event, handler);
-    }
-};
-
-// Flag to track if nav menu has been initialized
-let navMenuInitialized = false;
-
 // Initialize mobile navigation menu
 function initNavMenu() {
     const navLinks = document.querySelector('.nav-links');
@@ -47,7 +34,8 @@ function initCountdown() {
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        countdownElement.textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds until we say "I do"!`;
+        // countdownElement.textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds until we say "I do"!`;
+        countdownElement.textContent = `${days} days until we say "I do"!`;
     }
 
     // Initial update and set interval
