@@ -7,25 +7,30 @@
 }
 
 body {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cinzel', serif;
     margin: 0;
-    background-color: #F8F6F1;
+    padding: 0;
+    line-height: 1.6;
     color: #333;
+    background-color: #fff;
     text-align: center;
 }
-
+.header-ampersand {
+    color: #800020;
+}
 header {
     padding: 40px 20px;
 }
 
 h1 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cinzel', serif;
     font-size: 2.5em;
     font-weight: 400;
     margin: 0 0 10px 0;
     color: #333;
     letter-spacing: 1px;
     font-display: swap;
+    text-align: center;
 }
 
 .date-location {
@@ -130,13 +135,26 @@ nav {
     font-size: 0.9em;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .nav-links li a.active,
 .nav-links li a:hover {
+    text-decoration: none;
+    position: relative;
+    font-weight: normal;
     color: #333;
-    font-weight: bold;
+}
+
+.nav-links li a.active::after,
+.nav-links li a:hover::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 1.5px;
+    background-color: #7f1628;
+    bottom: 4px;
+    left: 10%;
 }
 
 .image-gallery {
@@ -166,7 +184,7 @@ nav {
 
 .rsvp-form h2 {
     text-align: center;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cinzel', serif;
     font-size: 2em;
     margin-bottom: 10px;
     color: #333;
@@ -198,7 +216,7 @@ nav {
     border: 1px solid #D3CFC8;
     border-radius: 4px;
     box-sizing: border-box;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cinzel', serif;
     font-size: 1em;
 }
 
@@ -258,7 +276,7 @@ nav {
     border: 1px solid #D3CFC8;
     border-radius: 4px;
     box-sizing: border-box;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cinzel', serif;
     font-size: 1em;
     margin-bottom: 10px;
 }
@@ -297,7 +315,7 @@ nav {
     padding: 10px 0;
     border: none;
     background: none;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cinzel', serif;
 }
 
 /* Mobile menu button */
@@ -307,7 +325,7 @@ nav {
     padding: 10px;
     background-color: #F5F4F1;
     cursor: pointer;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cinzel', serif;
     font-weight: bold;
     letter-spacing: 1px;
     color: #333;
@@ -599,4 +617,11 @@ nav {
         font-size: 18px;
         margin: 0 5px;
     }
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
 }

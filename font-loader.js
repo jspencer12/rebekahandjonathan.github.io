@@ -3,9 +3,9 @@ document.documentElement.classList.add('fonts-loading');
 
 if ('fonts' in document) {
     Promise.all([
-        // Load Cormorant Garamond fonts
-        document.fonts.load('1em "Cormorant Garamond"'),
-        document.fonts.load('700 1em "Cormorant Garamond"'),
+        // Load Cinzel fonts
+        document.fonts.load('1em "Cinzel"'),
+        document.fonts.load('700 1em "Cinzel"'),
         // Load Lato fonts
         document.fonts.load('300 1em "Lato"'),
         document.fonts.load('400 1em "Lato"'),

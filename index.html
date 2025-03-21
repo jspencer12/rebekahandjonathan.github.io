@@ -7,7 +7,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤍</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="font-styles.css">
     <script src="font-loader.js"></script>
@@ -17,7 +17,7 @@
 
     <main>
         <section class="image-gallery">
-            <img src="images/gallery1.png" alt="Couple image">
+            <img src="images/happycouple.jpeg" alt="Couple image">
         </section>
     </main>
 
@@ -26,6 +26,8 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('header-container').innerHTML = data;
+                
+                // Now that header is loaded, load script.js
                 let script = document.createElement('script');
                 script.src = 'script.js';
                 script.onload = () => document.dispatchEvent(new Event('headerLoaded'));
