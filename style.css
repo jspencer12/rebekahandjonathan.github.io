@@ -648,3 +648,107 @@ nav {
     color: #333;
     margin-bottom: 20px;
 }
+
+/* RSVP Selection Dialog Styles */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+    margin-top: 0;
+    color: #333;
+    text-align: center;
+}
+
+.modal-instructions {
+    text-align: center;
+}
+
+.modal-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.option-button {
+    padding: 10px 15px;
+    background-color: #B5A05A;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: normal;
+    text-align: left;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.option-button:hover {
+    background-color: #9b884d;
+}
+
+.option-info {
+    text-align: left;
+}
+
+.option-name {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.option-event {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.cancel-button {
+    padding: 10px 15px;
+    background-color: #aaa;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cancel-button:hover {
+    background-color: #999;
+}
+
+/* Form note styling */
+.form-note {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: -5px;
+    margin-bottom: 10px;
+    font-style: italic;
+    font-family: 'Lato', sans-serif;
+}

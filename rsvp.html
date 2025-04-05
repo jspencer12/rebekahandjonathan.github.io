@@ -31,20 +31,15 @@
                     <input type="text" id="name" name="entry.1118794439" required readonly style="display:none;">
                     <span id="guest-name-display" style="font-size: 1em; padding: 10px 0; display: block;"></span>
                 </div>
-                <div>
-                    <label>Will you be attending?</label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.928624325" value="Yes" required>
-                        Yes
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.928624325" value="No">
-                        No
-                    </label>
+
+                <div id="party-members-section">
+                    <label for="party-members">Additional guests in your party:</label>
+                    <p class="form-note">Please update this needed to reflect any changes in your party.</p>
+                    <input type="text" id="party-members" name="entry.670283244">
                 </div>
 
                 <div id="idaho-question" style="display:none;">
-                    <label>Will you be attending the Idaho Gathering?</label>
+                    <label>Will you be attending Jonekah's Ranch Rodeo in Victor, ID from Wednesday, June 25th through Friday, June 27th?</label>
                     <label class="radio-label">
                         <input type="radio" name="entry.1284767391" value="Yes">
                         Yes
@@ -55,8 +50,13 @@
                     </label>
                 </div>
 
+                <div id="idaho-guests" style="display:none;">
+                    <label>Which additional guests will be attending Jonekah's Ranch Rodeo? (Adults only)</label>
+                    <input type="text" id="idaho-guests-input" name="entry.483775006">
+                </div>
+
                 <div id="friday-question" style="display:none;">
-                    <label>Will you be attending the Friday Gathering?</label>
+                    <label>Will your party be attending the Picnic in Provo, UT at 6pm on Friday, June 27th?</label>
                     <label class="radio-label">
                         <input type="radio" name="entry.1140344561" value="Yes">
                         Yes
@@ -66,10 +66,42 @@
                         No
                     </label>
                 </div>
-
+                <div id="family-question" style="display:none;">
+                    <label>Will your party be attending the Family Luncheon in Payson, UT at 11am on Saturday, June 28th?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.2050502705" value="Yes">
+                        Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.2050502705" value="No">
+                        No
+                    </label>
+                </div>
+                <div id="utah-question">
+                    <label>Will your party be attending the Reception in Springville, UT at 6pm on Saturday, June 28th?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.928624325" value="Yes" required>
+                        Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.928624325" value="No">
+                        No
+                    </label>
+                </div>
+                <div id="california-question">
+                    <label>Will your party be attending the 5k & Picnic Open House in Atherton, CA at 10am on Saturday, July 19th?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.687141928" value="Yes" required>
+                        Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.687141928" value="No">
+                        No
+                    </label>
+                </div>
                 <div>
-                    <label for="guests">Number of guests:</label>
-                    <input type="text" id="guests" name="entry.484301818">
+                    <label for="anything-else">Anything else you would like to add?</label>
+                    <input type="text" id="anything-else" name="entry.484301818">
                 </div>
                 <button type="submit">Submit RSVP</button>
             </form>
