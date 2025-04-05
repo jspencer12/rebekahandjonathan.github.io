@@ -19,7 +19,7 @@
     <main>
         <section id="rsvp" class="rsvp-form">
             <h2>RSVP</h2>
-            <p>Please enter your name to begin the RSVP process.</p>
+            <p>Refer to Event Details for more detailed information on all events. Please submit this form only once per party.</p>
             <div id="name-lookup">
                 <label for="guest-name-lookup">Full Name:</label>
                 <input type="text" id="guest-name-lookup">
@@ -34,12 +34,12 @@
 
                 <div id="party-members-section">
                     <label for="party-members">Additional guests in your party:</label>
-                    <p class="form-note">Please update this needed to reflect any changes in your party.</p>
+                    <p class="form-note">Please update if needed to reflect any changes in your party.</p>
                     <input type="text" id="party-members" name="entry.670283244">
                 </div>
 
                 <div id="idaho-question" style="display:none;">
-                    <label>Will you be attending Jonekah's Ranch Rodeo in Victor, ID from Wednesday, June 25th through Friday, June 27th?</label>
+                    <label>Will you be attending Jonekah's Ranch Rodeo in Victor, ID from Wednesday, June 25th to Friday, June 27th?</label>
                     <label class="radio-label">
                         <input type="radio" name="entry.1284767391" value="Yes">
                         Yes
@@ -53,10 +53,12 @@
                 <div id="idaho-guests" style="display:none;">
                     <label>Which additional guests will be attending Jonekah's Ranch Rodeo? (Adults only)</label>
                     <input type="text" id="idaho-guests-input" name="entry.483775006">
+                    <label>Any dietary considerations for your party?</label>
+                    <input type="text" id="idaho-dietary-input" name="entry.450213361" placeholder="None">
                 </div>
 
                 <div id="friday-question" style="display:none;">
-                    <label>Will your party be attending the Picnic in Provo, UT at 6pm on Friday, June 27th?</label>
+                    <label>Will you and your party be attending the Picnic in Provo, UT at 6pm on Friday, June 27th?</label>
                     <label class="radio-label">
                         <input type="radio" name="entry.1140344561" value="Yes">
                         Yes
@@ -67,7 +69,7 @@
                     </label>
                 </div>
                 <div id="family-question" style="display:none;">
-                    <label>Will your party be attending the Family Luncheon in Payson, UT at 11am on Saturday, June 28th?</label>
+                    <label>Will you and your party be attending the Family Luncheon in Payson, UT at 11am on Saturday, June 28th?</label>
                     <label class="radio-label">
                         <input type="radio" name="entry.2050502705" value="Yes">
                         Yes
@@ -77,8 +79,23 @@
                         No
                     </label>
                 </div>
+                <div id="sealing-question" style="display:none;">
+                    <label>Rebekah and Jonathan would love to invite you to attend their sealing at the Payson Temple at 1:45pm on Saturday, June 28th. Guests are asked to arrive at 1:15pm. Will you be in attendance?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.885675918" value="Yes">
+                        Yes
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="entry.885675918" value="No">
+                        No
+                    </label>
+                </div>
+                <div id="sealing-guests" style="display:none;">
+                    <label>Will anyone else be attending the sealing with you? (Attendance limited to spouse of primary guest)</label>
+                    <input type="text" id="sealing-guests-input" name="entry.625072074">
+                </div>
                 <div id="utah-question">
-                    <label>Will your party be attending the Reception in Springville, UT at 6pm on Saturday, June 28th?</label>
+                    <label>Will you and your party be attending the Reception in Springville, UT at 6pm on Saturday, June 28th?</label>
                     <label class="radio-label">
                         <input type="radio" name="entry.928624325" value="Yes" required>
                         Yes
@@ -89,7 +106,7 @@
                     </label>
                 </div>
                 <div id="california-question">
-                    <label>Will your party be attending the 5k & Picnic Open House in Atherton, CA at 10am on Saturday, July 19th?</label>
+                    <label>Will you and your party be attending the 5k & Picnic Open House in Atherton, CA at 10am on Saturday, July 19th?</label>
                     <label class="radio-label">
                         <input type="radio" name="entry.687141928" value="Yes" required>
                         Yes
@@ -100,9 +117,10 @@
                     </label>
                 </div>
                 <div>
-                    <label for="anything-else">Anything else you would like to add?</label>
+                    <label for="anything-else">Anything else you would like to tell us?</label>
                     <input type="text" id="anything-else" name="entry.484301818">
                 </div>
+                <input type="text" id="original-party-list" name="entry.1074242478" required readonly style="display:none;">
                 <button type="submit">Submit RSVP</button>
             </form>
             <div id="rsvp-message" style="display:none;">

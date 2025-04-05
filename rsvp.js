@@ -131,12 +131,15 @@ class RSVPHandler {
       guestNameInput: document.getElementById("guest-name-lookup"),
       form: document.getElementById("rsvpForm"),
       nameInput: document.getElementById("name"),
+      originalPartyList: document.getElementById("original-party-list"),
       nameDisplay: document.getElementById("guest-name-display"),
       nameWrapper: document.getElementById("name-display-wrapper"),
       message: document.getElementById("rsvp-message"),
       attendingOptions: document.getElementById("attending-options"),
       idahoQuestion: document.getElementById("idaho-question"),
       fridayQuestion: document.getElementById("friday-question"),
+      familyQuestion: document.getElementById("family-question"),
+      sealingQuestion: document.getElementById("sealing-question"),
       partyMembersInput: document.getElementById("party-members"),
     };
 
@@ -157,6 +160,14 @@ class RSVPHandler {
     // Add event listeners
     this.elements.lookupButton.addEventListener("click", this.handleLookup);
     this.elements.form.addEventListener("submit", this.handleSubmit);
+
+    // Add event listener for Enter key in the name lookup input
+    this.elements.guestNameInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault(); // Prevent default form submission
+        this.handleLookup();
+      }
+    });
 
     // Check for previous submission
     if (this.state.submissionSuccessful) {
@@ -185,6 +196,27 @@ class RSVPHandler {
         }
       });
     });
+
+    // Add event listener for Sealing event question to show/hide Sealing guests section
+    const sealingOptions = document.querySelectorAll(
+      'input[name="entry.885675918"]'
+    );
+    sealingOptions.forEach((option) => {
+      option.addEventListener("change", (e) => {
+        const sealingGuestsSection = document.getElementById("sealing-guests");
+        if (sealingGuestsSection) {
+          sealingGuestsSection.style.display =
+            e.target.value === "Yes" ? "block" : "none";
+        }
+      });
+    });
+  }
+
+  // Helper to normalize names consistently
+  normalize(name) {
+    return String(name || "")
+      .trim()
+      .toLowerCase();
   }
 
   /**
@@ -205,13 +237,8 @@ class RSVPHandler {
       console.error("Guest list not loaded or empty.");
       return [];
     }
-    // Helper to normalize names consistently
-    const normalize = (name) =>
-      String(name || "")
-        .trim()
-        .toLowerCase();
 
-    const normalizedSearchName = normalize(searchName);
+    const normalizedSearchName = this.normalize(searchName);
     if (!normalizedSearchName) {
       console.warn("Search name is empty.");
       return [];
@@ -290,7 +317,7 @@ class RSVPHandler {
     // Update name display
     this.elements.nameInput.value = matchRecord.matchedName;
     this.elements.nameDisplay.textContent = matchRecord.matchedName;
-    let guest = matchRecord.guestRecord;
+    this.elements.originalPartyList.value = matchRecord.guestRecord.Party.join(", ");
 
     // Get other party members (excluding the matched name)
     const otherPartyMembers = matchRecord.guestRecord.Party.filter(
@@ -308,37 +335,20 @@ class RSVPHandler {
     // Store current guest
     this.state.currentGuest = matchRecord;
 
-    // Reset special event questions
-    if (this.elements.idahoQuestion)
-      this.elements.idahoQuestion.style.display = "none";
-    if (this.elements.fridayQuestion)
-      this.elements.fridayQuestion.style.display = "none";
-
-    // Show specific event questions
-    if (
-      ["Idaho", "Everything"].includes(guest.Event) &&
-      this.elements.idahoQuestion
-    ) {
-      this.elements.idahoQuestion.style.display = "block";
-    }
-    if (
-      ["Friday", "Everything"].includes(guest.Event) &&
-      this.elements.fridayQuestion
-    ) {
-      this.elements.fridayQuestion.style.display = "block";
-    }
-    if (
-      ["Family", "Everything"].includes(guest.Event) &&
-      this.elements.familyQuestion
-    ) {
-      this.elements.familyQuestion.style.display = "block";
-    }
-    if (
-      ["Sealing", "Everything"].includes(guest.Event) &&
-      this.elements.sealingQuestion
-    ) {
-      this.elements.sealingQuestion.style.display = "block";
-    }
+    // Show specific event questions depending on the guest's list
+    const eventList = [
+      { question: this.elements.idahoQuestion, list: "Idaho" },
+      { question: this.elements.fridayQuestion, list: "Friday" },
+      { question: this.elements.familyQuestion, list: "Family" },
+      { question: this.elements.sealingQuestion, list: "Sealing" },
+    ];
+    eventList.forEach((event) => {
+      if (matchRecord.guestRecord.Event.includes(event.list)) {
+        event.question.style.display = "block";
+      } else {
+        event.question.style.display = "none";
+      }
+    });
   }
 
   updateUIForSubmission() {
@@ -351,22 +361,16 @@ class RSVPHandler {
     alert(message);
   }
 
-  createSelectionDialog(matchRecords) {
-    // Create modal backdrop
+  createSelectionDialog(matchRecords, foundExactMatch = false) {
     const modalBackdrop = document.createElement("div");
     modalBackdrop.className = "modal-backdrop";
-
-    // Create modal content
     const modalContent = document.createElement("div");
     modalContent.className = "modal-content";
-
-    // Add title
-    const title = document.createElement("h3");
-    title.textContent = "Multiple matches found";
+    const title = document.createElement("p");
+    const prefix = foundExactMatch ? "Multiple matches" : "No exact match";
+    title.textContent = `${prefix} found for input: ${this.elements.guestNameInput.value}`;
     title.className = "modal-title";
     modalContent.appendChild(title);
-
-    // Add instructions
     const instructions = document.createElement("p");
     instructions.textContent = "Please select your name from the list below:";
     instructions.className = "modal-instructions";
@@ -375,8 +379,6 @@ class RSVPHandler {
     // Add list of options
     const optionsList = document.createElement("div");
     optionsList.className = "modal-options-list";
-
-    // Add each option as a button
     matchRecords.forEach((record) => {
       const optionButton = document.createElement("button");
       optionButton.className = "option-button";
@@ -384,13 +386,9 @@ class RSVPHandler {
       // Display name with party information
       const recordInfo = document.createElement("div");
       recordInfo.className = "option-info";
-
-      // Name
       const nameText = document.createElement("strong");
       nameText.textContent = record.matchedName;
       nameText.className = "option-name";
-
-      // Party members info
       const partyText = document.createElement("span");
 
       // Get party members without the matched name
@@ -399,9 +397,7 @@ class RSVPHandler {
       ).join(", ");
 
       if (otherPartyMembers) {
-        partyText.textContent = `Other Party Members: ${otherPartyMembers}`;
-      } else {
-        partyText.textContent = "No other party members";
+        partyText.textContent = `Party with: ${otherPartyMembers}`;
       }
       partyText.className = "option-event"; // Reusing the existing CSS class
 
@@ -436,6 +432,15 @@ class RSVPHandler {
 
     modalContent.appendChild(cancelButton);
     modalBackdrop.appendChild(modalContent);
+
+    // Add click handler to the backdrop to close when clicked outside the content
+    modalBackdrop.addEventListener("click", (e) => {
+      // Check if the click was directly on the backdrop (not on any of its children)
+      if (e.target === modalBackdrop) {
+        document.body.removeChild(modalBackdrop);
+      }
+    });
+
     document.body.appendChild(modalBackdrop);
   }
 
@@ -447,16 +452,20 @@ class RSVPHandler {
     try {
       const matchRecords = this.findGuest(enteredName);
 
-      if (matchRecords.length === 1) {
+      if (
+        matchRecords.length === 1 &&
+        this.normalize(matchRecords[0].matchedName) ===
+          this.normalize(enteredName)
+      ) {
         // Single match found - update UI directly
         this.updateUIForGuestFound(matchRecords[0]);
-      } else if (matchRecords.length > 1) {
+      } else if (matchRecords.length >= 1) {
         // Multiple matches found - show selection dialog
         this.createSelectionDialog(matchRecords);
       } else {
         // No matches found
         this.showError(
-          "Name not found on the guest list. Please try again or contact the host."
+          "Name not found on the guest list. Please try a different spelling or contact the host."
         );
       }
     } catch (error) {
