@@ -29,18 +29,6 @@
   visibility: hidden;
 }
 
-#header-container {
-  visibility: visible !important;
-  background-color: var(--bg-light);
-  position: relative;
-  z-index: 100;
-  min-height: 250px;
-  padding-bottom: 0;
-}
-.header-ampersand {
-    color: var(--primary-color);
-}
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -69,13 +57,13 @@ h3, h4, h5, h6 {
 }
 
 .cinzel, h1, h2 {
-  font-family: var(--font-family-serif-headings);
+  font-family: var(--font-family-serif-headings) !important;
 }
 
 /* Specific cinzel styles for inputs and spans */
 input.cinzel, 
 span.cinzel {
-  font-family: var(--font-family-serif-headings) !important;
+  font-family: var(--font-family-serif-headings);
   font-size: 1.1em;
   letter-spacing: 0.5px;
 }
@@ -134,7 +122,16 @@ main {
 
 /* ===== HEADER & NAVIGATION ===== */
 header {
-  padding: var(--spacing-xl) var(--spacing-lg);
+  visibility: visible !important;
+  padding: var(--spacing-xl);
+  background-color: var(--bg-light);
+  position: relative;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  min-height: 220px;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .header-ampersand {
@@ -169,14 +166,16 @@ header {
 }
 
 nav {
+  visibility: visible !important;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   padding: var(--spacing-md) var(--spacing-lg);
-  margin-bottom: 0;
-  position: absolute;
-  bottom: 0;
+  background-color: var(--bg-light);
+  position: sticky;
+  top: 0;
   left: 0;
   width: 100%;
+  z-index: 1001;
 }
 
 .nav-links {
@@ -559,16 +558,12 @@ textarea:focus {
     font-size: 0.9em;
   }
 
-  #header-container {
-    min-height: 200px;
-  }
-  
-  header {
-    padding: var(--spacing-lg);
-  }
-
   nav {
     padding: 0;
+    left: 0;
+    width: 100%;
+    position: sticky;
+    top: 0;
   }
   
   .mobile-menu-button {

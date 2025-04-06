@@ -13,29 +13,29 @@
     <script src="font-loader.js"></script>
 </head>
 <body>
-
-    <div id="header-container"></div>
-
+    <header></header>
+    <nav></nav>
     <main>
         <section class="container">
             <h2>Our Story</h2>
             <div class="story-content">
-                <p>Share your story here...</p>
+                <p>Coming soon...</p>
                 <!-- Add your story content here -->
             </div>
         </section>
     </main>
 
     <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-                let script = document.createElement('script');
-                script.src = 'script.js';
-                script.onload = () => document.dispatchEvent(new Event('headerLoaded'));
-                document.body.appendChild(script);
-            });
+        (async function loadComponents() {
+            const headerHtml = await (await fetch('header_content.html')).text();
+            const navHtml = await (await fetch('nav_content.html')).text();
+            document.querySelector('header').innerHTML = headerHtml;
+            document.querySelector('nav').innerHTML = navHtml;
+            document.dispatchEvent(new Event('headerLoaded'));
+            const script = document.createElement('script');
+            script.src = 'script.js';
+            document.body.appendChild(script);
+        })();
     </script>
 </body>
 </html>

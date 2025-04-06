@@ -13,9 +13,8 @@
     <script src="font-loader.js"></script>
 </head>
 <body>
-
-    <div id="header-container"></div>
-
+    <header></header>
+    <nav></nav>
     <main>
         <section id="rsvp" class="form-section">
             <h2 class="center">RSVP</h2>
@@ -41,7 +40,7 @@
                 <div id="party-members-section" class="rsvp-question">
                     <p for="party-members">Additional guests in your party:</p>
                     <p class="form-note">Please update if needed to reflect any changes in your party.</p>
-                    <textarea id="party-members" class="cinzel" name="entry.670283244" rows="2"></textarea>
+                    <textarea id="party-members" class="cinzel" name="entry.670283244" rows="2" placeholder="N/A"></textarea>
                 </div>
 
                 <div id="idaho-question" class="rsvp-question" style="display:none;">
@@ -60,9 +59,9 @@
 
                 <div id="idaho-guests" class="rsvp-question" style="display:none;">
                     <p>Which additional guests will be attending Jonekah's Ranch Rodeo? (Adults only)</p>
-                    <input type="text" id="idaho-guests-input" class="cinzel" name="entry.483775006">
+                    <input type="text" id="idaho-guests-input" class="cinzel" name="entry.483775006" placeholder="N/A">
                     <p>Any dietary considerations for your party?</p>
-                    <input type="text" id="idaho-dietary-input" name="entry.450213361" placeholder="None">
+                    <input type="text" id="idaho-dietary-input" name="entry.450213361" placeholder="N/A">
                 </div>
 
                 <div id="friday-question" class="rsvp-question" style="display:none;">
@@ -108,7 +107,7 @@
                 <div id="sealing-guests" class="rsvp-question" style="display:none;">
                     <p>Will anyone else be attending the sealing with you?</p>
                     <p class="form-note">(Attendance limited to spouse of primary guest)</p>
-                    <input type="text" id="sealing-guests-input" class="cinzel" name="entry.625072074">
+                    <input type="text" id="sealing-guests-input" class="cinzel" name="entry.625072074" placeholder="N/A">
                 </div>
                 <div id="utah-question" class="rsvp-question">
                     <p>Will you and your party be attending the Reception in Springville, UT at 6pm on Saturday, June 28th?</p>
@@ -153,15 +152,16 @@
     </main>
 
     <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-                let script = document.createElement('script');
-                script.src = 'script.js';
-                script.onload = () => document.dispatchEvent(new Event('headerLoaded'));
-                document.body.appendChild(script);
-            });
+        (async function loadComponents() {
+            const headerHtml = await (await fetch('header_content.html')).text();
+            const navHtml = await (await fetch('nav_content.html')).text();
+            document.querySelector('header').innerHTML = headerHtml;
+            document.querySelector('nav').innerHTML = navHtml;
+            document.dispatchEvent(new Event('headerLoaded'));
+            const script = document.createElement('script');
+            script.src = 'script.js';
+            document.body.appendChild(script);
+        })();
     </script>
     <script src="guest-utils.js"></script>
     <script src="rsvp.js"></script>

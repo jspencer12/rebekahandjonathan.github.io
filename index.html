@@ -13,8 +13,8 @@
     <script src="font-loader.js"></script>
 </head>
 <body>
-    <div id="header-container"></div>
-
+    <header></header>
+    <nav></nav>
     <main>
         <section class="image-gallery">
             <img src="images/happycouple.jpeg" alt="Couple image">
@@ -22,17 +22,16 @@
     </main>
 
     <script>
-        fetch('header.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header-container').innerHTML = data;
-                
-                // Now that header is loaded, load script.js
-                let script = document.createElement('script');
-                script.src = 'script.js';
-                script.onload = () => document.dispatchEvent(new Event('headerLoaded'));
-                document.body.appendChild(script);
-            });
+        (async function loadComponents() {
+            const headerHtml = await (await fetch('header_content.html')).text();
+            const navHtml = await (await fetch('nav_content.html')).text();
+            document.querySelector('header').innerHTML = headerHtml;
+            document.querySelector('nav').innerHTML = navHtml;
+            document.dispatchEvent(new Event('headerLoaded'));
+            const script = document.createElement('script');
+            script.src = 'script.js';
+            document.body.appendChild(script);
+        })();
     </script>
 </body>
 </html>
