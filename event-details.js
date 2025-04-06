@@ -133,6 +133,7 @@ class EventDetailsHandler {
 
     // Process the event value(s)
     const events = matchRecord.guestRecord.Event.split(";");
+    events.push("Reception", "California");
     events.forEach((event) => {
       const trimmedEvent = event.trim();
 

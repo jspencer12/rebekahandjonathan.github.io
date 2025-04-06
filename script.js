@@ -43,8 +43,5 @@ function initCountdown() {
     setInterval(updateCountdown, 1000);
 }
 
-// Initialize everything when header is loaded
-document.addEventListener('headerLoaded', () => {
-    initNavMenu();
-    initCountdown();
-});
+initNavMenu();
+initCountdown();

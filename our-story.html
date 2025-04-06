@@ -13,8 +13,23 @@
     <script src="font-loader.js"></script>
 </head>
 <body>
-    <header></header>
-    <nav></nav>
+    <header>
+        <h1>Rebekah <span class="header-ampersand">&</span> Jonathan</h1>
+        <p class="date-location">SATURDAY, JUNE 28, 2025 <span class="separator"></span> PAYSON, UT</p>
+        <p class="countdown" id="countdown" style="margin-bottom: 0;">TOO MANY DAYS UNTIL WE SAY "I DO"!</p>
+    </header>
+    <nav>
+        <div class="mobile-menu-button">- Menu -</div>
+        <ul class="nav-links">
+              <li><a href="/">Home</a></li>
+              <li><a href="our-story.html">Our Story</a></li>
+              <li><a href="photos.html">Photos</a></li>
+              <li><a href="qa.html">Q + A</a></li>
+              <li><a href="event-details.html">Event Details</a></li>
+              <li><a href="registry.html">Registry</a></li>
+              <li><a href="rsvp.html">RSVP</a></li>
+        </ul>
+    </nav>
     <main>
         <section class="container">
             <h2>Our Story</h2>
@@ -25,17 +40,6 @@
         </section>
     </main>
 
-    <script>
-        (async function loadComponents() {
-            const headerHtml = await (await fetch('header_content.html')).text();
-            const navHtml = await (await fetch('nav_content.html')).text();
-            document.querySelector('header').innerHTML = headerHtml;
-            document.querySelector('nav').innerHTML = navHtml;
-            document.dispatchEvent(new Event('headerLoaded'));
-            const script = document.createElement('script');
-            script.src = 'script.js';
-            document.body.appendChild(script);
-        })();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

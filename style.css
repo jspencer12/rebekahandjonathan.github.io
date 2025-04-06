@@ -370,7 +370,7 @@ textarea:focus {
 /* RSVP form question styling */
 .rsvp-question {
   margin-bottom: var(--spacing-lg);
-  padding-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-lg);
   border-bottom: 1px solid var(--border-light);
 }
 
