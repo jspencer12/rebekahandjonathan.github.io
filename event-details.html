@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details - Rebekah & Jonathan</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤍</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="font-styles.css">
+    <script src="font-loader.js"></script>
+</head>
+<body>
+
+    <div id="header-container"></div>
+
+    <main>
+        <section id="event-details" class="form-section">
+            <h2 class="center">Event Details</h2>
+            
+            <!-- Name lookup section (Same as RSVP) -->
+            <div id="name-lookup">
+                <p>Please enter your name to view event details.</p>
+                <label for="guest-name-lookup">Full Name:</label>
+                <input type="text" id="guest-name-lookup">
+                <button type="button" id="lookup-button" class="btn">View Details</button>
+            </div>
+            
+            <!-- Event details content (initially hidden) -->
+            <div id="event-details-content" style="display:none;">
+                <div id="welcome-message" class="rsvp-question center">
+                    <p>Welcome, <span id="guest-name-display"></span>!</p>
+                    <button type="button" id="logout-button" class="btn btn-small">Not you?</button>
+                </div>
+                
+                <div id="event-list-section">
+                    <p>You are invited to the following events:</p>
+                    <ul id="event-list" class="event-list"></ul>
+                </div>
+                
+                <div class="button-container center">
+                    <a href="rsvp.html" class="btn">RSVP Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-container').innerHTML = data;
+                document.dispatchEvent(new Event('headerLoaded'));
+            });
+    </script>
+    <script src="script.js"></script>
+    <script src="guest-utils.js"></script>
+    <script src="event-details.js"></script>
+</body>
+</html> 

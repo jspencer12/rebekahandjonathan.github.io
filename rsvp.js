@@ -1,125 +1,7 @@
 /**
- * Parses CSV content string into an array of guest objects.
- * Assumes the CSV has columns "List" and "Party".
- *
- * @param {string} csvContent The raw CSV data as a string.
- * @returns {Array<object>} An array of objects, each with 'Event' (string) and 'Party' (array of strings) properties.
+ * RSVP Form Handler
+ * This file uses shared utility functions from guest-utils.js to handle guest lookups and RSVP form submission.
  */
-function parseRsvpCsv(csvContent) {
-    const lines = csvContent.trim().split('\n'); // Split into lines
-    const guests = [];
-
-    if (lines.length < 2) {
-        console.error("CSV content is too short. Needs at least a header and one data row.");
-        return guests; // Return empty array if no data
-    }
-
-    // --- Find column indices from header ---
-    const headerLine = lines[0].trim();
-    // Basic CSV split, assuming no commas within quoted fields for simplicity
-    const headers = headerLine.split(',').map(h => h.trim());
-
-    const listIndex = headers.indexOf('List');
-    const partyIndex = headers.indexOf('Party');
-    // Note: "Form input" index is not needed based on requirements
-
-    if (listIndex === -1) {
-        console.error("CSV header does not contain required column: 'List'");
-        return guests; // Return empty if required header is missing
-    }
-    if (partyIndex === -1) {
-        console.error("CSV header does not contain required column: 'Party'");
-        return guests; // Return empty if required header is missing
-    }
-
-    // --- Process data rows ---
-    for (let i = 1; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if (!line) continue; // Skip empty lines
-
-        // Basic CSV split, same assumption as header
-        const values = line.split(',').map(v => v.trim());
-
-        // Ensure the row has enough columns based on the needed indices
-        if (values.length > listIndex && values.length > partyIndex) {
-            const eventValue = values[listIndex];
-            const partyString = values[partyIndex] || ''; // Get party string, default to empty string if undefined/null
-
-            // Split the party string by ';', trim each resulting name, and filter out any empty strings
-            const partyArray = partyString.split(';')
-                                         .map(name => name.trim())
-                                         .filter(name => name !== ''); // Remove empty entries potentially caused by trailing semicolons or double semicolons
-
-            guests.push({
-                Event: eventValue,
-                Party: partyArray
-            });
-        } else {
-            console.warn(`Skipping row ${i + 1}: Not enough columns.`);
-        }
-    }
-
-    return guests;
-}
-
-async function loadAndParseGuests() {
-    window.parsedGuests = []
-    try {
-        // Fetch the CSV file. Adjust the path if 'rsvp.csv' is located elsewhere.
-        const response = await fetch('rsvp.csv');
-
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status} - Could not fetch rsvp.csv`);
-        }
-
-        const csvData = await response.text(); // Get CSV content as text
-        window.parsedGuests = parseRsvpCsv(csvData); // Parse the data and assign to the global scope
-
-        // console.log('Guests successfully parsed and stored in window.parsedGuests:');
-        // console.log(window.parsedGuests);
-
-    } catch (error) {
-        console.error('Error loading or parsing guest data:', error);
-        window.parsedGuests = []; // Assign an empty array in case of an error
-    }
-}
-
-/**
- * Calculates the Levenshtein distance between two strings.
- * (Minimum number of single-character edits: insertions, deletions, substitutions).
- * @param {string} s1 The first string.
- * @param {string} s2 The second string.
- * @returns {number} The Levenshtein distance.
- */
-function levenshteinDistance(s1, s2) {
-    // Ensure strings are strings and handle potential null/undefined inputs
-    const str1 = String(s1 || '');
-    const str2 = String(s2 || '');
-    const len1 = str1.length;
-    const len2 = str2.length;
-
-    if (len1 === 0) return len2;
-    if (len2 === 0) return len1;
-
-    // Use a single array to optimize space slightly (optional, matrix is often clearer)
-    let prevRow = Array(len2 + 1).fill(0).map((_, i) => i);
-    let currentRow = Array(len2 + 1).fill(0);
-
-    for (let i = 1; i <= len1; i++) {
-        currentRow[0] = i;
-        for (let j = 1; j <= len2; j++) {
-            const cost = str1[i - 1] === str2[j - 1] ? 0 : 1;
-            currentRow[j] = Math.min(
-                currentRow[j - 1] + 1,      // Insertion
-                prevRow[j] + 1,          // Deletion
-                prevRow[j - 1] + cost     // Substitution
-            );
-        }
-        prevRow = [...currentRow]; // Update prevRow for the next iteration
-    }
-
-    return currentRow[len2];
-}
 
 // RSVP Form Handler
 class RSVPHandler {
@@ -132,7 +14,8 @@ class RSVPHandler {
       form: document.getElementById("rsvpForm"),
       nameInput: document.getElementById("name"),
       originalPartyList: document.getElementById("original-party-list"),
-      nameDisplay: document.getElementById("guest-name-display"),
+      // guestNameDisplay: document.getElementById("guest-name-display"),
+      welcomeNameDisplay: document.getElementById("welcome-name-display"),
       nameWrapper: document.getElementById("name-display-wrapper"),
       message: document.getElementById("rsvp-message"),
       attendingOptions: document.getElementById("attending-options"),
@@ -141,6 +24,7 @@ class RSVPHandler {
       familyQuestion: document.getElementById("family-question"),
       sealingQuestion: document.getElementById("sealing-question"),
       partyMembersInput: document.getElementById("party-members"),
+      logoutButton: document.getElementById("logout-button"),
     };
 
     this.state = {
@@ -151,6 +35,9 @@ class RSVPHandler {
     // Bind event handlers
     this.handleLookup = this.handleLookup.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateUIForGuestFound = this.updateUIForGuestFound.bind(this);
+    this.checkForSavedUser = this.checkForSavedUser.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
 
     // Initialize
     this.init();
@@ -161,6 +48,11 @@ class RSVPHandler {
     this.elements.lookupButton.addEventListener("click", this.handleLookup);
     this.elements.form.addEventListener("submit", this.handleSubmit);
 
+    // Add logout button handler
+    if (this.elements.logoutButton) {
+      this.elements.logoutButton.addEventListener("click", this.handleLogout);
+    }
+
     // Add event listener for Enter key in the name lookup input
     this.elements.guestNameInput.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
@@ -169,9 +61,33 @@ class RSVPHandler {
       }
     });
 
+    // Add event listeners to all radio buttons to highlight selected option
+    document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+      // Check initial state
+      if (radio.checked) {
+        radio.closest(".radio-label").classList.add("selected");
+      }
+
+      // Add change event listener
+      radio.addEventListener("change", function () {
+        // Remove 'selected' class from all radio labels in the same group
+        document.querySelectorAll(`input[name="${this.name}"]`).forEach((r) => {
+          r.closest(".radio-label").classList.remove("selected");
+        });
+
+        // Add 'selected' class to the selected radio label
+        if (this.checked) {
+          this.closest(".radio-label").classList.add("selected");
+        }
+      });
+    });
+
     // Check for previous submission
     if (this.state.submissionSuccessful) {
       this.updateUIForSubmission();
+    } else {
+      // Check for a saved user session
+      this.checkForSavedUser();
     }
 
     // Add listener for Idaho event question to show/hide Idaho guests section
@@ -212,112 +128,39 @@ class RSVPHandler {
     });
   }
 
-  // Helper to normalize names consistently
-  normalize(name) {
-    return String(name || "")
-      .trim()
-      .toLowerCase();
-  }
+  // Check for a saved user in cookie
+  checkForSavedUser() {
+    try {
+      const savedUserJSON = getCookie("validatedWeddingGuest");
+      if (savedUserJSON) {
+        try {
+          const savedUser = JSON.parse(savedUserJSON);
+          const currentRecord = validateSavedUser(savedUser);
 
-  /**
-   * Finds guest records based on a name search using exact and fuzzy matching.
-   * Searches within the 'Party' array of each guest record.
-   *
-   * @param {string} searchName The name to search for.
-   * @returns {Array<object>} An array of match objects { matchedName: string, guestRecord: object },
-   * sorted by relevance (exact matches first, then closest fuzzy matches).
-   * Returns an empty array if no suitable match is found.
-   */
-  findGuest(searchName) {
-    const MAX_DISTANCE = 3; // Maximum allowed Levenshtein distance for fuzzy matches
-
-    // 1. Input Validation & Normalization
-    const guestList = window.parsedGuests;
-    if (!Array.isArray(guestList) || guestList.length === 0) {
-      console.error("Guest list not loaded or empty.");
-      return [];
-    }
-
-    const normalizedSearchName = this.normalize(searchName);
-    if (!normalizedSearchName) {
-      console.warn("Search name is empty.");
-      return [];
-    }
-
-    // 2. Flatten guest list and calculate distances for all names
-    const allPotentialMatches = guestList.flatMap((guestRecord) => {
-      // Ensure guestRecord and Party are valid before mapping
-      if (!guestRecord || !Array.isArray(guestRecord.Party)) {
-        console.warn("Skipping invalid guest record:", guestRecord);
-        return []; // Skip this record by returning an empty array for flatMap
+          if (currentRecord) {
+            this.updateUIForGuestFound(currentRecord);
+            return true;
+          }
+        } catch (parseError) {
+          console.error("Error parsing saved user data:", parseError);
+          deleteCookie("validatedWeddingGuest");
+        }
       }
-      return guestRecord.Party.map((nameInParty) =>
-        String(nameInParty || "").trim()
-      ) // Trim original name
-        .filter((name) => name) // Filter out empty names after trimming
-        .map((originalName) => {
-          const normalizedName = originalName.toLowerCase(); // No need for normalize() again
-          return {
-            originalName: originalName,
-            distance: levenshteinDistance(normalizedSearchName, normalizedName),
-            record: guestRecord,
-          };
-        });
-    });
-
-    // 3. Filter for relevant matches (exact or within MAX_DISTANCE)
-    const relevantMatches = allPotentialMatches.filter(
-      (match) => match.distance <= MAX_DISTANCE
-    );
-
-    // 4. Sort matches: Exact matches (distance 0) first, then by distance, then alphabetically
-    relevantMatches.sort((a, b) => {
-      // Prioritize exact matches (distance 0)
-      if (a.distance === 0 && b.distance !== 0) return -1;
-      if (a.distance !== 0 && b.distance === 0) return 1;
-      // If both exact or both fuzzy, sort by distance
-      if (a.distance !== b.distance) return a.distance - b.distance;
-      // Tie-break by name alphabetically for consistent ordering
-      return a.originalName.localeCompare(b.originalName);
-    });
-
-    // 5. Determine final result set based on whether exact matches were found
-    const hasExactMatch = relevantMatches.some((match) => match.distance === 0);
-    let finalMatches;
-
-    if (hasExactMatch) {
-      // Return all exact matches found
-      finalMatches = relevantMatches.filter((match) => match.distance === 0);
-      console.log(
-        `Found ${finalMatches.length} exact match(es) for "${normalizedSearchName}".`
-      );
-    } else if (relevantMatches.length > 0) {
-      // No exact matches, return top 5 fuzzy matches (already sorted)
-      finalMatches = relevantMatches.slice(0, 3);
-      console.log(
-        `No exact match for "${normalizedSearchName}". Found ${finalMatches.length} potential fuzzy match(es):`,
-        finalMatches.map((m) => `${m.originalName} (Dist: ${m.distance})`)
-      );
-    } else {
-      // No relevant matches at all
-      finalMatches = [];
-      console.log(
-        `No exact or close fuzzy match found for "${normalizedSearchName}".`
-      );
+    } catch (error) {
+      console.error("Error checking for saved user:", error);
+      deleteCookie("validatedWeddingGuest");
     }
-
-    // 6. Format output
-    return finalMatches.map(({ originalName, record }) => ({
-      matchedName: originalName,
-      guestRecord: record,
-    }));
+    return false;
   }
 
   updateUIForGuestFound(matchRecord) {
     // Update name display
     this.elements.nameInput.value = matchRecord.matchedName;
-    this.elements.nameDisplay.textContent = matchRecord.matchedName;
-    this.elements.originalPartyList.value = matchRecord.guestRecord.Party.join(", ");
+    // this.elements.guestNameDisplay.textContent = matchRecord.matchedName;
+    this.elements.welcomeNameDisplay.textContent =
+      matchRecord.matchedName.split(" ")[0];
+    this.elements.originalPartyList.value =
+      matchRecord.guestRecord.Party.join(", ");
 
     // Get other party members (excluding the matched name)
     const otherPartyMembers = matchRecord.guestRecord.Party.filter(
@@ -326,8 +169,8 @@ class RSVPHandler {
     this.elements.partyMembersInput.value = otherPartyMembers;
 
     // Update visibility
-    this.elements.nameInput.style.display = "none";
-    this.elements.nameDisplay.style.display = "block";
+    this.elements.nameInput.style.display = "block";
+    // this.elements.guestNameDisplay.style.display = "block";
     this.elements.nameLookup.style.display = "none";
     this.elements.form.style.display = "block";
     this.elements.message.style.display = "none";
@@ -345,6 +188,13 @@ class RSVPHandler {
     eventList.forEach((event) => {
       if (matchRecord.guestRecord.Event.includes(event.list)) {
         event.question.style.display = "block";
+        // Make radio buttons required when the question is displayed
+        const radioButtons = event.question.querySelectorAll(
+          'input[type="radio"]'
+        );
+        radioButtons.forEach((radio) => {
+          radio.required = true;
+        });
       } else {
         event.question.style.display = "none";
       }
@@ -361,116 +211,22 @@ class RSVPHandler {
     alert(message);
   }
 
-  createSelectionDialog(matchRecords, foundExactMatch = false) {
-    const modalBackdrop = document.createElement("div");
-    modalBackdrop.className = "modal-backdrop";
-    const modalContent = document.createElement("div");
-    modalContent.className = "modal-content";
-    const title = document.createElement("p");
-    const prefix = foundExactMatch ? "Multiple matches" : "No exact match";
-    title.textContent = `${prefix} found for input: ${this.elements.guestNameInput.value}`;
-    title.className = "modal-title";
-    modalContent.appendChild(title);
-    const instructions = document.createElement("p");
-    instructions.textContent = "Please select your name from the list below:";
-    instructions.className = "modal-instructions";
-    modalContent.appendChild(instructions);
-
-    // Add list of options
-    const optionsList = document.createElement("div");
-    optionsList.className = "modal-options-list";
-    matchRecords.forEach((record) => {
-      const optionButton = document.createElement("button");
-      optionButton.className = "option-button";
-
-      // Display name with party information
-      const recordInfo = document.createElement("div");
-      recordInfo.className = "option-info";
-      const nameText = document.createElement("strong");
-      nameText.textContent = record.matchedName;
-      nameText.className = "option-name";
-      const partyText = document.createElement("span");
-
-      // Get party members without the matched name
-      const otherPartyMembers = record.guestRecord.Party.filter(
-        (member) => member !== record.matchedName
-      ).join(", ");
-
-      if (otherPartyMembers) {
-        partyText.textContent = `Party with: ${otherPartyMembers}`;
-      }
-      partyText.className = "option-event"; // Reusing the existing CSS class
-
-      // Add to container
-      recordInfo.appendChild(nameText);
-      recordInfo.appendChild(partyText);
-      optionButton.appendChild(recordInfo);
-
-      // Add click handler
-      optionButton.addEventListener("click", () => {
-        // Remove the modal
-        document.body.removeChild(modalBackdrop);
-
-        // Update the UI with the selected guest
-        this.updateUIForGuestFound(record);
-      });
-
-      optionsList.appendChild(optionButton);
-    });
-
-    modalContent.appendChild(optionsList);
-
-    // Add close/cancel button
-    const cancelButton = document.createElement("button");
-    cancelButton.textContent = "Cancel";
-    cancelButton.className = "cancel-button";
-
-    // Add click handler for cancel button
-    cancelButton.addEventListener("click", () => {
-      document.body.removeChild(modalBackdrop);
-    });
-
-    modalContent.appendChild(cancelButton);
-    modalBackdrop.appendChild(modalContent);
-
-    // Add click handler to the backdrop to close when clicked outside the content
-    modalBackdrop.addEventListener("click", (e) => {
-      // Check if the click was directly on the backdrop (not on any of its children)
-      if (e.target === modalBackdrop) {
-        document.body.removeChild(modalBackdrop);
-      }
-    });
-
-    document.body.appendChild(modalBackdrop);
-  }
-
   async handleLookup() {
     if (this.state.submissionSuccessful) return;
 
     const enteredName = this.elements.guestNameInput.value.trim();
 
     try {
-      const matchRecords = this.findGuest(enteredName);
-
-      if (
-        matchRecords.length === 1 &&
-        this.normalize(matchRecords[0].matchedName) ===
-          this.normalize(enteredName)
-      ) {
-        // Single match found - update UI directly
-        this.updateUIForGuestFound(matchRecords[0]);
-      } else if (matchRecords.length >= 1) {
-        // Multiple matches found - show selection dialog
-        this.createSelectionDialog(matchRecords);
-      } else {
-        // No matches found
-        this.showError(
-          "Name not found on the guest list. Please try a different spelling or contact the host."
-        );
-      }
+      // Use the shared userValidate function
+      userValidate({
+        enteredName: enteredName,
+        onUserValidated: this.updateUIForGuestFound,
+      });
     } catch (error) {
       console.error("Error during guest lookup:", error);
-      this.showError("Error loading guest list. Please contact the host.");
+      this.showError(
+        "Name not found on the guest list. Please try a different spelling or contact the host."
+      );
     }
   }
 
@@ -498,11 +254,20 @@ class RSVPHandler {
       this.elements.form.style.display = "block";
     }
   }
+
+  // Handle logout - delete cookie and reset the form
+  handleLogout() {
+    deleteCookie("validatedWeddingGuest");
+    this.elements.form.style.display = "none";
+    this.elements.nameLookup.style.display = "block";
+    this.elements.guestNameInput.value = ""; // Clear input field
+    this.elements.guestNameInput.focus(); // Focus on input field
+  }
 }
 
 // Initialize RSVP handler when DOM is loaded
-document.addEventListener('DOMContentLoaded', async () => {
-    await loadAndParseGuests();
-    console.log('Number of parsed guests:', window.parsedGuests.length);
-    new RSVPHandler();
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadAndParseGuests();
+  console.log("Number of parsed guests:", window.parsedGuests.length);
+  new RSVPHandler();
 }); 

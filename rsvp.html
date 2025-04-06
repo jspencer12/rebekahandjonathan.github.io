@@ -7,7 +7,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤍</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="font-styles.css">
     <script src="font-loader.js"></script>
@@ -17,111 +17,134 @@
     <div id="header-container"></div>
 
     <main>
-        <section id="rsvp" class="rsvp-form">
-            <h2>RSVP</h2>
-            <p>Refer to Event Details for more detailed information on all events. Please submit this form only once per party.</p>
+        <section id="rsvp" class="form-section">
+            <h2 class="center">RSVP</h2>
+            <p class="center">Refer to <a href="events.html"><b>Event Details</b></a> for more detailed information on all events.</p>
             <div id="name-lookup">
+                <p class="center">Names populated here are based on the <i>Save the Date</i>.
+                <br>If your name is not found, please contact the hosts.</p>
                 <label for="guest-name-lookup">Full Name:</label>
-                <input type="text" id="guest-name-lookup">
-                <button type="button" id="lookup-button">Next</button>
+                <input type="text" class="cinzel" id="guest-name-lookup">
+                <button type="button" id="lookup-button" class="btn">Next</button>
             </div>
             <form action="https://docs.google.com/forms/d/e/1FAIpQLSfSzV8Wk3f-dlMXIX4eeiNn62UFk_mJphwi7-qd1U7ogsil6A/formResponse" method="POST" id="rsvpForm" style="display:none;">
-                <div id="name-display-wrapper">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="entry.1118794439" required readonly style="display:none;">
-                    <span id="guest-name-display" style="font-size: 1em; padding: 10px 0; display: block;"></span>
+                <div id="welcome-message" class="rsvp-question center">
+                    <p>Welcome, <span id="welcome-name-display"></span>!</p>
+                    <button type="button" id="logout-button" class="btn btn-small">Not you?</button>
                 </div>
-
-                <div id="party-members-section">
-                    <label for="party-members">Additional guests in your party:</label>
+                
+                <div id="name-display-wrapper" class="rsvp-question">
+                    <p for="name">Name:</p>
+                    <input type="text" id="name" class="cinzel" name="entry.1118794439" required>
+                </div>
+                
+                <div id="party-members-section" class="rsvp-question">
+                    <p for="party-members">Additional guests in your party:</p>
                     <p class="form-note">Please update if needed to reflect any changes in your party.</p>
-                    <input type="text" id="party-members" name="entry.670283244">
+                    <textarea id="party-members" class="cinzel" name="entry.670283244" rows="2"></textarea>
                 </div>
 
-                <div id="idaho-question" style="display:none;">
-                    <label>Will you be attending Jonekah's Ranch Rodeo in Victor, ID from Wednesday, June 25th to Friday, June 27th?</label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.1284767391" value="Yes">
-                        Yes
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.1284767391" value="No">
-                        No
-                    </label>
+                <div id="idaho-question" class="rsvp-question" style="display:none;">
+                    <p>Will you be attending Jonekah's Ranch Rodeo in Victor, ID from Wednesday, June 25th to Friday, June 27th?</p>
+                    <div class="radio-options">
+                        <p class="radio-label">
+                            <input type="radio" name="entry.1284767391" value="Yes">
+                            <span>Yes</span>
+                        </p>
+                        <p class="radio-label">
+                            <input type="radio" name="entry.1284767391" value="No">
+                            <span>No</span>
+                        </p>
+                    </div>
                 </div>
 
-                <div id="idaho-guests" style="display:none;">
-                    <label>Which additional guests will be attending Jonekah's Ranch Rodeo? (Adults only)</label>
-                    <input type="text" id="idaho-guests-input" name="entry.483775006">
-                    <label>Any dietary considerations for your party?</label>
+                <div id="idaho-guests" class="rsvp-question" style="display:none;">
+                    <p>Which additional guests will be attending Jonekah's Ranch Rodeo? (Adults only)</p>
+                    <input type="text" id="idaho-guests-input" class="cinzel" name="entry.483775006">
+                    <p>Any dietary considerations for your party?</p>
                     <input type="text" id="idaho-dietary-input" name="entry.450213361" placeholder="None">
                 </div>
 
-                <div id="friday-question" style="display:none;">
-                    <label>Will you and your party be attending the Picnic in Provo, UT at 6pm on Friday, June 27th?</label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.1140344561" value="Yes">
-                        Yes
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.1140344561" value="No">
-                        No
-                    </label>
+                <div id="friday-question" class="rsvp-question" style="display:none;">
+                    <p>Will you and your party be attending the Picnic in Provo, UT at 6pm on Friday, June 27th?</p>
+                    <div class="radio-options">
+                        <p class="radio-label">
+                            <input type="radio" name="entry.1140344561" value="Yes">
+                            <span>Yes</span>
+                        </p>
+                        <p class="radio-label">
+                            <input type="radio" name="entry.1140344561" value="No">
+                            <span>No</span>
+                        </p>
+                    </div>
                 </div>
-                <div id="family-question" style="display:none;">
-                    <label>Will you and your party be attending the Family Luncheon in Payson, UT at 11am on Saturday, June 28th?</label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.2050502705" value="Yes">
-                        Yes
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.2050502705" value="No">
-                        No
-                    </label>
+                <div id="family-question" class="rsvp-question" style="display:none;">
+                    <p>Will you and your party be attending the Family Luncheon in Payson, UT at 11am on Saturday, June 28th?</p>
+                    <div class="radio-options">
+                        <p class="radio-label">
+                            <input type="radio" name="entry.2050502705" value="Yes">
+                            <span>Yes</span>
+                        </p>
+                        <p class="radio-label">
+                            <input type="radio" name="entry.2050502705" value="No">
+                            <span>No</span>
+                        </p>
+                    </div>
                 </div>
-                <div id="sealing-question" style="display:none;">
-                    <label>Rebekah and Jonathan would love to invite you to attend their sealing at the Payson Temple at 1:45pm on Saturday, June 28th. Guests are asked to arrive at 1:15pm. Will you be in attendance?</label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.885675918" value="Yes">
-                        Yes
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.885675918" value="No">
-                        No
-                    </label>
+                <div id="sealing-question" class="rsvp-question" style="display:none;">
+                    <p>Rebekah and Jonathan would love to invite you to attend their sealing at the Payson Temple at 1:45pm on Saturday, June 28th. Guests are asked to arrive at 1:15pm.</p>
+                    <p class="center">Will you be in attendance?</p>
+                    <div class="radio-options">
+                        <p class="radio-label">
+                            <input type="radio" name="entry.885675918" value="Yes">
+                            <span>Yes</span>
+                        </p>
+                        <p class="radio-label">
+                            <input type="radio" name="entry.885675918" value="No">
+                            <span>No</span>
+                        </p>
+                    </div>
                 </div>
-                <div id="sealing-guests" style="display:none;">
-                    <label>Will anyone else be attending the sealing with you? (Attendance limited to spouse of primary guest)</label>
-                    <input type="text" id="sealing-guests-input" name="entry.625072074">
+                <div id="sealing-guests" class="rsvp-question" style="display:none;">
+                    <p>Will anyone else be attending the sealing with you?</p>
+                    <p class="form-note">(Attendance limited to spouse of primary guest)</p>
+                    <input type="text" id="sealing-guests-input" class="cinzel" name="entry.625072074">
                 </div>
-                <div id="utah-question">
-                    <label>Will you and your party be attending the Reception in Springville, UT at 6pm on Saturday, June 28th?</label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.928624325" value="Yes" required>
-                        Yes
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.928624325" value="No">
-                        No
-                    </label>
+                <div id="utah-question" class="rsvp-question">
+                    <p>Will you and your party be attending the Reception in Springville, UT at 6pm on Saturday, June 28th?</p>
+                    <div class="radio-options">
+                        <p class="radio-label">
+                            <input type="radio" name="entry.928624325" value="Yes" required>
+                            <span>Yes</span>
+                        </p>
+                        <p class="radio-label">
+                            <input type="radio" name="entry.928624325" value="No">
+                            <span>No</span>
+                        </p>
+                    </div>
                 </div>
-                <div id="california-question">
-                    <label>Will you and your party be attending the 5k & Picnic Open House in Atherton, CA at 10am on Saturday, July 19th?</label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.687141928" value="Yes" required>
-                        Yes
-                    </label>
-                    <label class="radio-label">
-                        <input type="radio" name="entry.687141928" value="No">
-                        No
-                    </label>
+                <div id="california-question" class="rsvp-question">
+                    <p>Will you and your party be attending the 5k & Picnic Open House in Atherton, CA at 10am on Saturday, July 19th?</p>
+                    <div class="radio-options">
+                        <p class="radio-label">
+                            <input type="radio" name="entry.687141928" value="Yes" required>
+                            <span>Yes</span>
+                        </p>
+                        <p class="radio-label">
+                            <input type="radio" name="entry.687141928" value="No">
+                            <span>No</span>
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    <label for="anything-else">Anything else you would like to tell us?</label>
-                    <input type="text" id="anything-else" name="entry.484301818">
+                <div id="anything-else-section" class="rsvp-question">
+                    <p for="anything-else">Anything else you would like to tell us?</p>
+                    <textarea id="anything-else" name="entry.484301818" rows="4"></textarea>
                 </div>
+                <!-- Hidden fields -->
                 <input type="text" id="original-party-list" name="entry.1074242478" required readonly style="display:none;">
-                <button type="submit">Submit RSVP</button>
+                <div class="rsvp-question">
+                    <button type="submit" class="btn btn-block">Submit RSVP</button>
+                </div>
             </form>
             <div id="rsvp-message" style="display:none;">
                 <p>Thank you for your RSVP!</p>
@@ -140,6 +163,7 @@
                 document.body.appendChild(script);
             });
     </script>
+    <script src="guest-utils.js"></script>
     <script src="rsvp.js"></script>
 </body>
 </html> 
