@@ -354,11 +354,21 @@ textarea:focus {
 }
 
 .btn-secondary {
-  background-color: #aaa;
+  background-color: #F5F4F1;
+  border: 1px solid var(--border-color);
+  color: black;
+  padding: var(--spacing-sm) var(--spacing-sm);
+  text-align: center;
+  text-decoration: none;
+  font-size: 0.8em;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .btn-secondary:hover {
-  background-color: #999;
+  background-color: #aaa;
 }
 
 .btn-small {
@@ -451,6 +461,13 @@ textarea:focus {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   border-color: var(--secondary-color);
 }
+
+.registry-container {
+    max-width: 700px; /* adjust as needed */
+    margin: 0 auto;
+    padding: 1rem; /* optional, for spacing */
+  }
+  
 
 /* Modal dialog */
 .modal-backdrop {
