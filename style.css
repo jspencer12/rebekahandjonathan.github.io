@@ -4,8 +4,8 @@
   --primary-color: #7f1628;
   --secondary-color: #B5A05A;
   --secondary-hover: #9b884d;
-  --text-color: #333;
-  --text-light: #555;
+  --text-color: #000000;
+  --text-light: #020202;
   --bg-color: #fff;
   --bg-light: #F5F4F1;
   --border-color: #D3CFC8;
@@ -600,14 +600,21 @@ textarea:focus {
     align-items: center;       /* aligns children vertically */
     flex-wrap: wrap;            /* allows wrapping on small screens */
   }
+
+.horizontal-stack > div {
+    flex: 1;
+    min-width: 300px; /* ensures they don’t shrink too small */
+    max-width: 500px;
+  }
   
 .event-divider {
-  height: 120px;
-  width: 1px;
-  background-color: var(--border-color);
-  margin: 0 5px;
-}
-
+    width: 1px;
+    background-color: var(--border-color);
+    align-self: stretch;
+    flex: 0 0 auto;
+    margin: 0 20px;
+  }
+  
 .event-location {
   font-family: var(--font-family-sans);
   font-size: 1em;
@@ -735,8 +742,12 @@ textarea:focus {
   }
 }
 
-/* Bold maroon text class */
 .black-bold {
   font-weight: bold;
   color: black;
 }
+
+.maroon-bold {
+    font-weight: bold;
+    color: var(--primary-color);
+  }
