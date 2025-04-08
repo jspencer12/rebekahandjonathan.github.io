@@ -51,8 +51,39 @@ function parseRsvpCsv(csvContent) {
         .map((name) => name.trim())
         .filter((name) => name !== "");
 
+      // Split events by semicolon and sort in specific order
+      const eventOrder = {
+        Idaho: 1,
+        Friday: 2,
+        Family: 3,
+        Sealing: 4,
+        Reception: 5,
+        California: 6,
+      };
+      const sortedEvents = eventValue
+        .split(";")
+        .map((event) => event.trim())
+        .filter((event) => event)
+        .sort((a, b) => {
+          // If both events are in our predefined order, sort by that order
+          if (eventOrder[a] && eventOrder[b]) {
+            return eventOrder[a] - eventOrder[b];
+          }
+          // If only one event is in our order, prioritize it
+          else if (eventOrder[a]) {
+            return -1;
+          } else if (eventOrder[b]) {
+            return 1;
+          }
+          // For events not in our predefined order, sort alphabetically
+          else {
+            return a.localeCompare(b);
+          }
+        })
+        .join(";");
+
       guests.push({
-        Event: eventValue,
+        Event: sortedEvents,
         Party: partyArray,
       });
     } else {

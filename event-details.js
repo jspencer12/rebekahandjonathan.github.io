@@ -163,13 +163,13 @@ class EventDetailsHandler {
       Family: {
         name: "Family Luncheon",
         date: "Saturday, June 28, 2025, 11:00 AM",
-        location: "Payson, UT",
+        location: "Clarion Gardens, 463 E 100 N, Payson UT 84651",
         description: "Family gathering before the sealing ceremony.",
       },
       Sealing: {
         name: "Sealing Ceremony",
         date: "Saturday, June 28, 2025, 1:45 PM (arrive by 1:15 PM)",
-        location: "Payson Utah Temple",
+        location: "Payson Utah Temple, 1494 S 930 W St, Payson UT 84651",
         description: "Sacred marriage ceremony for the couple.",
       },
       Reception: {
