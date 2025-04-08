@@ -95,45 +95,143 @@ class EventDetailsHandler {
     const eventDetails = {
       Idaho: {
         name: "Jonekah's Ranch Rodeo",
-        date: "June 25-27, 2024",
-        location: "Victor, ID",
-        descriptionShort: "Western-themed activities in Idaho.",
-        descriptionLong: "TEST LONG"
+        date: "Wednesday, June 25 @ 12pm - Friday, June 27 @ 11am, 2025",
+        location: "Sky Mountain Ranch, 4391 W 9000 S, Victor, ID 83455",
+        description:
+          "A few days together in Teton Valley, Idaho to create new memories together before the wedding.",
+        descriptionLong: `<h4>Overview</h4>
+        <p>We are so excited to spend time with you at Jonekah's Ranch Rodeo! We know time is your most valuable resource and we are grateful for the chance to spend it with you.</p>
+        
+        <h4>Weather & What to Bring</h4>
+        <p>Average temperatures in Victor, Idaho range from 49°F at night to 81°F in the day.</p>
+        <p><strong>Dress code:</strong> Anything you want! You will likely want cool clothes for the day, layers for the evenings, and an outfit you want to dance the night away in for the barn dance.</p>
+        
+        <h4>Schedule & Activities</h4>
+        <p>You can find information on the schedule, lodgings, and carpools through the Idaho Carpool information that was shared with you. While there are activities scheduled throughout each day, you are free to spend your time however you want. You can take a dip in the pond, challenge someone in a pickleball match, or start a side conversation with a new friend.</p>
+        
+        <h4>Food</h4>
+        <p>We will have a food coordinator for all the meals during our time at Sky Mountain. To make meals for this size of group more feasible, we are going to ask everyone to pitch in on cooking and/or cleaning a meal or two. We will send out meal prep assignments closer to the event. Please let us know if you have any allergies or won't be around for any of the meals.</p>
+        
+        <h4>Communication</h4>
+        <p>Once you have RSVP'ed "coming" to the ranch rodeo, we will add you to a Whatsapp group with all the attendees.</p>
+        
+        <h4>Travel Information</h4>
+        <p><strong>Salt Lake City Airport (recommended option)</strong><br>
+        279 miles away<br>
+        Since the wedding itself and reception are in Utah, this is a good option to fly into, drive up to Idaho, drive back down for the reception, and then fly home.</p>
+        <p>We recommend:</p>
+        <ul>
+          <li>Fly into SLC Tuesday evening or Wednesday morning</li>
+          <li>Drive from SLC to Victor, Idaho on Wednesday morning</li>
+          <li>Drive from Idaho back down to Utah on Friday afternoon</li>
+          <li>Party all day Saturday</li>
+          <li>Fly home from SLC on Sunday</li>
+        </ul>
+        
+        <p><strong>Jackson Hole Airport</strong><br>
+        38 miles away, about an hour drive<br>
+        Tends to be pricey</p>
+        
+        <h4>Local Recommendations</h4>
+        <p><strong>Favorite restaurants in the area:</strong></p>
+        <ul>
+          <li>Butter Cafe for brunch</li>
+          <li>Knotty Pine Supper Club for barbecue</li>
+          <li>Victor Emporium for shakes</li>
+        </ul>
+        
+        <p><strong>Amazing hikes in the area:</strong></p>
+        <ul>
+          <li>Wind Caves (6.3 miles)</li>
+          <li>Lower Palisades (8.8 miles)</li>
+          <li>Green Lakes (14.9 miles)</li>
+          <li>Taylor Mountain (14.2 miles)</li>
+        </ul>`,
       },
       Friday: {
-        name: "Picnic",
-        date: "Friday, June 27, 2024, 6:00 PM",
-        location: "Provo, UT",
-        descriptionShort: "Join us for a casual evening picnic.",
-        descriptionLong: ""
+        name: "Picnic in Provo",
+        date: "Friday, June 27, 2025, 5:00 PM - 7:00 PM",
+        location: "South Fork Park, 4988 North South Fork Rd., Provo UT 84604",
+        description:
+          "A picnic in the gorgeous Utah mountains and a chance for relaxed chats before the wedding day.",
+        descriptionLong: `<h4>Overview</h4>
+        <p>A picnic in the gorgeous Utah mountains and a chance for relaxed chats before the wedding day chaos.</p>
+        
+        <h4>Weather & What to Bring</h4>
+        <p>Average temperatures in Provo, Utah range from 61°F at night to 92°F on a typical June day.</p>
+        <p><strong>Dress code:</strong> Picnic chic. Think a light summer dress or linen shirt.</p>`,
       },
       Family: {
         name: "Family Luncheon",
-        date: "Saturday, June 28, 2024, 11:00 AM",
+        date: "Saturday, June 28, 2025, 11:00 AM",
         location: "Payson, UT",
-        descriptionShort: "Family gathering before the sealing.",
-        descriptionLong: ""
+        description: "Family gathering before the sealing ceremony.",
       },
       Sealing: {
         name: "Sealing Ceremony",
-        date: "Saturday, June 28, 2024, 1:45 PM (arrive by 1:15 PM)",
+        date: "Saturday, June 28, 2025, 1:45 PM (arrive by 1:15 PM)",
         location: "Payson Utah Temple",
-        descriptionShort: "Sacred marriage ceremony for the couple.",
-        descriptionLong: ""
+        description: "Sacred marriage ceremony for the couple.",
       },
       Reception: {
         name: "Wedding Reception",
-        date: "Saturday, June 28, 2024, 6:00 PM",
-        location: "Springville, UT",
-        descriptionShort: "Celebrate the newlyweds and enjoy refreshments.",
-        descriptionLong: ""
+        date: "Saturday, June 28, 2025, 6:00 PM - 9:30 PM",
+        location:
+          "Hitching Post Event Venue, 1520 N Main Street, Springville UT 84663",
+        description:
+          "Open house style reception with food, dancing, and fun activities.",
+        descriptionLong: `<h4>Overview</h4>
+        <p>Open house style reception. There will be food, dancing, and fun ways to get to know us. Kids are welcome.</p>
+        
+        <h4>Weather & What to Bring</h4>
+        <p>The venue has air conditioning! Outside temperatures in Springville, Utah range from 59°F at night to 85°F on a typical June day.</p>
+        <p><strong>Dress code:</strong> Cocktail attire. The wedding party will be in black. All other guests are invited to wear something in our sunset color palette.</p>
+        
+        <h4>Schedule</h4>
+        <ul>
+          <li>6:00 - 7:00 PM: Receiving line + food</li>
+          <li>7:15 PM: Cake cutting</li>
+          <li>7:30 PM: Toasts</li>
+          <li>7:45 PM: Special presentation from the newly weds</li>
+          <li>8:00 - 9:00 PM: Dance party</li>
+          <li>9:15 PM: Flower petal exit</li>
+        </ul>
+        
+        <h4>Local Recommendations</h4>
+        <p><strong>Hikes:</strong></p>
+        <ul>
+          <li>Scout Falls (2.9 miles)</li>
+          <li>Mount Timpanogos (14.2 miles, 4471 ft elevation gain)</li>
+          <li>Y Mountain (6.6 miles, a BYU classic)</li>
+        </ul>
+        
+        <p><strong>Food:</strong></p>
+        <ul>
+          <li>Gourmandise for great pastries</li>
+          <li>Màstra in American Fork for shockingly good Italian food</li>
+        </ul>`,
       },
       California: {
         name: "5k & Picnic Open House",
-        date: "Saturday, July 19, 2024, 10:00 AM",
-        location: "Atherton, CA",
-        descriptionShort: "California celebration with optional 5k run and picnic.",
-        descriptionLong: ""
+        date: "Saturday, July 19, 2025, 10:00 AM - 1:00 PM",
+        location: "Holbrook Palmer Park, 150 Watkins Ave, Atherton, CA 94027",
+        description: "California celebration with optional 5k run and picnic.",
+        descriptionLong: `<h4>Overview</h4>
+        <p>Come jog a 5k with us or just bring your picnic blanket and join us for bagels in the park. For the 5k we are running 4 laps around the park, so feel free to join for however many laps you'd like or walk while the runners run. Kids are welcome!</p>
+        
+        <h4>Dress Code</h4>
+        <p>Casual/athletic. We will be in our running clothes from the 5k, so don't make us feel out of place!</p>
+        
+        <h4>Schedule</h4>
+        <ul>
+          <li>10:00 AM: 5k course overview</li>
+          <li>10:15 AM: 5k starts</li>
+          <li>10:45 AM: Cheer runners on at the finish line</li>
+          <li>11:00 AM: "Cake cutting"</li>
+          <li>11:00 AM - 12:00 PM: Mingling and picnicking</li>
+          <li>12:00 PM: Special presentation from the newly wed couple</li>
+          <li>1:00 PM: "Send off the newly weds"</li>
+        </ul>`,
       },
     };
 
@@ -148,7 +246,7 @@ class EventDetailsHandler {
         name: trimmedEvent,
         date: "See invitation for details",
         location: "See invitation for details",
-        descriptionShort: "",
+        description: "",
         descriptionLong: "",
       };
 
@@ -169,33 +267,36 @@ class EventDetailsHandler {
       eventItem.appendChild(eventLocation);
 
       const eventDescription = document.createElement("p");
-      eventDescription.textContent = eventInfo.descriptionShort;
+      eventDescription.textContent = eventInfo.description;
       eventItem.appendChild(eventDescription);
 
-      const eventDescriptionLong = document.createElement("p");
-      eventDescriptionLong.textContent = eventInfo.descriptionLong;
-      eventDescriptionLong.classList.add("hidden");
-      eventItem.appendChild(eventDescriptionLong);
+      // Create a section for the detailed description if it exists
+      if (eventInfo.descriptionLong) {
+        const detailsSection = document.createElement("div");
+        detailsSection.className = "event-details-section hidden";
+        detailsSection.innerHTML = eventInfo.descriptionLong;
+        eventItem.appendChild(detailsSection);
 
-      const buttonContainer = document.createElement("div");
-      buttonContainer.classList.add("center");
-      const toggleButton = document.createElement("button");
-      toggleButton.textContent = "Show More Details";
-      toggleButton.classList.add("btn","btn-small");
-      buttonContainer.appendChild(toggleButton);
-      eventItem.appendChild(buttonContainer);
+        // Add toggle button if there's detailed description
+        const buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("center");
+        const toggleButton = document.createElement("button");
+        toggleButton.textContent = "Show More Details";
+        toggleButton.classList.add("btn", "btn-small");
+        buttonContainer.appendChild(toggleButton);
+        eventItem.appendChild(buttonContainer);
 
-      toggleButton.addEventListener("click", () => {
-        eventDescriptionLong.classList.toggle("hidden");
-        if (eventDescriptionLong.classList.contains("hidden")) {
-          toggleButton.textContent = "Show More Details";
-        } else {
-          toggleButton.textContent = "Hide More Details";
-        }
-      });
+        toggleButton.addEventListener("click", () => {
+          detailsSection.classList.toggle("hidden");
+          if (detailsSection.classList.contains("hidden")) {
+            toggleButton.textContent = "Show More Details";
+          } else {
+            toggleButton.textContent = "Hide More Details";
+          }
+        });
+      }
 
       this.elements.eventList.appendChild(eventItem);
-
     });
   }
 

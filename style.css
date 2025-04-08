@@ -707,3 +707,32 @@ textarea:focus {
     margin: 15px auto;
   }
 }
+
+/* Event details section styling */
+.event-details-section {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: #f9f7f2;
+  border-radius: 4px;
+}
+
+.event-details-section h4 {
+  color: var(--primary-color);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  font-family: var(--font-family-serif-headings);
+  font-size: 1.1em;
+}
+
+.event-details-section h4:first-child {
+  margin-top: 0;
+}
+
+.event-details-section ul {
+  margin-left: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.event-details-section p {
+  margin-bottom: var(--spacing-sm);
+}
