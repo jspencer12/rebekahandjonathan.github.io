@@ -101,13 +101,14 @@ class EventDetailsHandler {
           "A few days together in Teton Valley, Idaho to create new memories together before the wedding.",
         descriptionLong: `<h4>Overview</h4>
         <p>We are so excited to spend time with you at Jonekah's Ranch Rodeo! We know time is your most valuable resource and we are grateful for the chance to spend it with you.</p>
+        <p>Please take some time to look through our <a href="https://docs.google.com/spreadsheets/d/16UwVw72FbFisB9dX5P6EEWCHjYJOYdcQ1weiqvKutUU/edit?usp=sharing" target="_blank" class="schedule-link">detailed schedule</a> to get a better idea of what we have planned.</p>
         
         <h4>Weather & What to Bring</h4>
         <p>Average temperatures in Victor, Idaho range from 49°F at night to 81°F in the day.</p>
         <p><strong>Dress code:</strong> Anything you want! You will likely want cool clothes for the day, layers for the evenings, and an outfit you want to dance the night away in for the barn dance.</p>
         
         <h4>Schedule & Activities</h4>
-        <p>You can find information on the schedule, lodgings, and carpools through the Idaho Carpool information that was shared with you. While there are activities scheduled throughout each day, you are free to spend your time however you want. You can take a dip in the pond, challenge someone in a pickleball match, or start a side conversation with a new friend.</p>
+        <p>Here is the  <a href="https://docs.google.com/spreadsheets/d/16UwVw72FbFisB9dX5P6EEWCHjYJOYdcQ1weiqvKutUU/edit?usp=sharing" target="_blank" class="schedule-link">detailed schedule</a> with all the activities for the three days. While there are activities scheduled throughout each day, you are free to spend your time however you want. You can take a dip in the pond, challenge someone in a pickleball match, or start a side conversation with a new friend.</p>
         
         <h4>Food</h4>
         <p>We will have a food coordinator for all the meals during our time at Sky Mountain. To make meals for this size of group more feasible, we are going to ask everyone to pitch in on cooking and/or cleaning a meal or two. We will send out meal prep assignments closer to the event. Please let us know if you have any allergies or won't be around for any of the meals.</p>
@@ -154,12 +155,10 @@ class EventDetailsHandler {
         location: "South Fork Park, 4988 North South Fork Rd., Provo UT 84604",
         description:
           "A picnic in the gorgeous Utah mountains and a chance for relaxed chats before the wedding day.",
-        descriptionLong: `<h4>Overview</h4>
-        <p>A picnic in the gorgeous Utah mountains and a chance for relaxed chats before the wedding day chaos.</p>
-        
-        <h4>Weather & What to Bring</h4>
-        <p>Average temperatures in Provo, Utah range from 61°F at night to 92°F on a typical June day.</p>
-        <p><strong>Dress code:</strong> Picnic chic. Think a light summer dress or linen shirt.</p>`,
+        descriptionLong: `
+        <h4>Dress Code</h4>
+        <p>Picnic chic. Think a light summer dress or linen shirt.</p>
+        <p><strong>Weather: </strong>Average temperatures in Provo, Utah range from 61°F at night to 92°F on a typical June day.</p>`,
       },
       Family: {
         name: "Family Luncheon",
@@ -183,9 +182,16 @@ class EventDetailsHandler {
         descriptionLong: `<h4>Overview</h4>
         <p>Open house style reception. There will be food, dancing, and fun ways to get to know us. Kids are welcome.</p>
         
-        <h4>Weather & What to Bring</h4>
-        <p>The venue has air conditioning! Outside temperatures in Springville, Utah range from 59°F at night to 85°F on a typical June day.</p>
-        <p><strong>Dress code:</strong> Cocktail attire. The wedding party will be in black. All other guests are invited to wear something in our sunset color palette.</p>
+        <h4>Dress Code</h4>
+        <div class="dress-code-container">
+          <div class="dress-code-text">
+            <p>Cocktail attire.</p> <p>The wedding party will be in black. <span class="black-bold">All other guests are invited to wear something in our sunset color palette pictured to the right.</span></p>
+            <p><strong>Weather: </strong>Outside temperatures in Springville, Utah range from 59°F at night to 85°F on a typical June day. However, the venue has air conditioning!</p>
+          </div>
+          <div class="color-palette-img">
+            <img src="images/webp/WeddingGuestColorsSunset.webp" alt="Sunset color palette for wedding guests" style="max-width: 100%; border-radius: 4px;">
+          </div>
+        </div>
         
         <h4>Schedule</h4>
         <ul>
