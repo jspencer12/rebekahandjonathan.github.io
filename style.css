@@ -334,21 +334,21 @@ textarea:focus {
 }
 
 .btn {
-  background-color: var(--secondary-color);
-  color: white;
-  padding: var(--spacing-sm) var(--spacing-lg);
-  text-align: center;
-  text-decoration: none;
-  font-size: 1em;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    background-color: #F5F4F1;
+    border: 1px solid var(--border-color);
+    color: black;
+    padding: var(--spacing-sm) var(--spacing-sm);
+    text-align: center;
+    text-decoration: none;
+    font-size: 0.8em;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .btn:hover {
-  background-color: var(--secondary-hover);
+    background-color: #aaa;
 }
 
 .btn-block {
@@ -378,6 +378,7 @@ textarea:focus {
   font-size: 0.8em;
   padding: var(--spacing-xs) var(--spacing-sm);
   margin-left: var(--spacing-sm);
+  font-family: var(--font-family-serif);
 }
 
 /* RSVP form question styling */
@@ -466,73 +467,9 @@ textarea:focus {
 }
 
 .registry-container {
-    max-width: 700px; /* adjust as needed */
-    margin: 0 auto;
-    padding: 1rem; /* optional, for spacing */
-  }
-  
-
-/* Modal dialog */
-.modal-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-content {
-  background-color: white;
-  padding: var(--spacing-lg);
-  border-radius: 5px;
-  max-width: 500px;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.modal-title, 
-.modal-instructions {
-  text-align: center;
-  margin-bottom: var(--spacing-md);
-}
-
-.modal-options-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  margin: var(--spacing-md) 0;
-}
-
-.option-button {
-  padding: var(--spacing-sm) var(--spacing-md);
-  background-color: var(--secondary-color);
-  color: white;
-  border-radius: 4px;
-  text-align: left;
-  transition: background-color 0.3s ease;
-}
-
-.option-button:hover {
-  background-color: var(--secondary-hover);
-}
-
-.option-name {
-  display: block;
-  font-size: 1.1em;
-  margin-bottom: 4px;
-  font-weight: bold;
-}
-
-.option-event {
-  font-size: 0.9em;
-  opacity: 0.8;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 /* Lightbox */
