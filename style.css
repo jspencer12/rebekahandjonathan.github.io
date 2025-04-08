@@ -650,3 +650,57 @@ textarea:focus {
   height: auto;
   display: block;
 }
+
+/* Event dates layout styling */
+
+.horizontal-stack {
+    display: flex;
+    gap: 20px;
+    justify-content: center;    /* centers children horizontally */
+    align-items: center;       /* aligns children vertically */
+    flex-wrap: wrap;            /* allows wrapping on small screens */
+  }
+  
+.event-divider {
+  height: 120px;
+  width: 1px;
+  background-color: var(--border-color);
+  margin: 0 5px;
+}
+
+.event-location {
+  font-family: var(--font-family-sans);
+  font-size: 1em;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+
+.event-day {
+  font-family: var(--font-family-serif-headings);
+  font-size: 1em;
+  margin-bottom: 5px;
+}
+
+.event-date-text {
+  font-family: var(--font-family-sans);
+  font-size: 1em;
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+/* Mobile responsive adjustments for event dates */
+@media (max-width: 650px) {
+  .event-dates-container {
+    flex-direction: column;
+    margin: 20px auto;
+  }
+  
+  .event-divider {
+    height: 1px;
+    width: 80%;
+    margin: 15px auto;
+  }
+}
