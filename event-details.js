@@ -97,37 +97,43 @@ class EventDetailsHandler {
         name: "Jonekah's Ranch Rodeo",
         date: "June 25-27, 2024",
         location: "Victor, ID",
-        description: "Western-themed activities in Idaho.",
+        descriptionShort: "Western-themed activities in Idaho.",
+        descriptionLong: "TEST LONG"
       },
       Friday: {
         name: "Picnic",
         date: "Friday, June 27, 2024, 6:00 PM",
         location: "Provo, UT",
-        description: "Join us for a casual evening picnic.",
+        descriptionShort: "Join us for a casual evening picnic.",
+        descriptionLong: ""
       },
       Family: {
         name: "Family Luncheon",
         date: "Saturday, June 28, 2024, 11:00 AM",
         location: "Payson, UT",
-        description: "Family gathering before the sealing.",
+        descriptionShort: "Family gathering before the sealing.",
+        descriptionLong: ""
       },
       Sealing: {
         name: "Sealing Ceremony",
         date: "Saturday, June 28, 2024, 1:45 PM (arrive by 1:15 PM)",
         location: "Payson Utah Temple",
-        description: "Sacred marriage ceremony for the couple.",
+        descriptionShort: "Sacred marriage ceremony for the couple.",
+        descriptionLong: ""
       },
       Reception: {
         name: "Wedding Reception",
         date: "Saturday, June 28, 2024, 6:00 PM",
         location: "Springville, UT",
-        description: "Celebrate the newlyweds and enjoy refreshments.",
+        descriptionShort: "Celebrate the newlyweds and enjoy refreshments.",
+        descriptionLong: ""
       },
       California: {
         name: "5k & Picnic Open House",
         date: "Saturday, July 19, 2024, 10:00 AM",
         location: "Atherton, CA",
-        description: "California celebration with optional 5k run and picnic.",
+        descriptionShort: "California celebration with optional 5k run and picnic.",
+        descriptionLong: ""
       },
     };
 
@@ -142,7 +148,8 @@ class EventDetailsHandler {
         name: trimmedEvent,
         date: "See invitation for details",
         location: "See invitation for details",
-        description: "",
+        descriptionShort: "",
+        descriptionLong: "",
       };
 
       const eventItem = document.createElement("div");
@@ -150,6 +157,7 @@ class EventDetailsHandler {
 
       const eventTitle = document.createElement("h3");
       eventTitle.textContent = eventInfo.name;
+      eventTitle.classList.add("center");
       eventItem.appendChild(eventTitle);
 
       const eventDate = document.createElement("p");
@@ -160,13 +168,34 @@ class EventDetailsHandler {
       eventLocation.innerHTML = `<strong>Location:</strong> ${eventInfo.location}`;
       eventItem.appendChild(eventLocation);
 
-      if (eventInfo.description) {
-        const eventDescription = document.createElement("p");
-        eventDescription.textContent = eventInfo.description;
-        eventItem.appendChild(eventDescription);
-      }
+      const eventDescription = document.createElement("p");
+      eventDescription.textContent = eventInfo.descriptionShort;
+      eventItem.appendChild(eventDescription);
+
+      const eventDescriptionLong = document.createElement("p");
+      eventDescriptionLong.textContent = eventInfo.descriptionLong;
+      eventDescriptionLong.classList.add("hidden");
+      eventItem.appendChild(eventDescriptionLong);
+
+      const buttonContainer = document.createElement("div");
+      buttonContainer.classList.add("center");
+      const toggleButton = document.createElement("button");
+      toggleButton.textContent = "Show More Details";
+      toggleButton.classList.add("btn","btn-small");
+      buttonContainer.appendChild(toggleButton);
+      eventItem.appendChild(buttonContainer);
+
+      toggleButton.addEventListener("click", () => {
+        eventDescriptionLong.classList.toggle("hidden");
+        if (eventDescriptionLong.classList.contains("hidden")) {
+          toggleButton.textContent = "Show More Details";
+        } else {
+          toggleButton.textContent = "Hide More Details";
+        }
+      });
 
       this.elements.eventList.appendChild(eventItem);
+
     });
   }
 

@@ -28,6 +28,9 @@
 .fonts-loading * {
   visibility: hidden;
 }
+.hidden {
+  display: none !important; /* !important to ensure it overrides other styles */
+}
 
 * {
   box-sizing: border-box;
@@ -49,14 +52,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: var(--spacing-sm);
 }
 
-h3, h4, h5, h6 {
+h4, h5, h6 {
   font-family: var(--font-family-serif);
   font-weight: 400;
   color: var(--text-color);
   margin-bottom: var(--spacing-sm);
 }
 
-.cinzel, h1, h2 {
+.cinzel, h1, h2, h3 {
   font-family: var(--font-family-serif-headings) !important;
 }
 
