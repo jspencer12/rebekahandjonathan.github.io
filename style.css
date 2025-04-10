@@ -126,21 +126,20 @@ button {
 }
 .our-story-longform {
   max-width: 900px;
+  padding: var(--spacing-sm);
 }
-.our-story-longform p > div:not(image-caption){
+.our-story-longform p {
   text-align: left; /* Ensures the text is left-aligned */
   text-indent: 2em; /* Indent the first line of the paragraph */
 }
 .image-left, .image-right {
   width: 150px;  /* Adjust size of images */
-  margin: var(--spacing-sm);
+  /* margin: var(--spacing-sm); */
 }
-
 .image-left {
   float: left;
   margin-right: 20px; /* Adjust margin for spacing between text */
 }
-
 .image-right {
   float: right;
   margin-left: 20px; /* Adjust margin for spacing between text */
@@ -150,8 +149,9 @@ img {
   width: 100%;
   height: auto;
 }
-.image-caption {
+p.image-caption {
   text-align: center;
+  text-indent: 0;
   font-family: var(--font-family-sans);
   margin-top: 0px;
   font-size:x-small;
@@ -319,10 +319,6 @@ textarea:focus {
   word-wrap: break-word;
   overflow-wrap: break-word;
   box-sizing: border-box;
-}
-
-input#guest-name-lookup {
-  max-width: 400px;
 }
 
 label {
