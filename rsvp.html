@@ -7,7 +7,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤍</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="font-styles.css">
     <script src="font-loader.js"></script>
@@ -33,11 +33,12 @@
     <main>
         <section id="rsvp" class="form-section">
             <h2 class="center">RSVP</h2>
-            <p class="center">Refer to <a href="events.html"><b>Event Details</b></a> for more detailed information on all events.</p>
+            <p class="center">Refer to <a href="events.html"><b>Event Details</b></a> for more detailed information on all events.<br>
+                If your plans change, simply submit this form again with your updated information.</p>
             <div id="name-lookup">
                 <p class="center">Names populated here are based on the <i>Save the Date</i>. If your name is not found, please ensure you type your name the same as in the link you were sent, or contact the hosts.</p>
                 <label for="guest-name-lookup">Full Name:</label>
-                <input type="text" class="cinzel" id="guest-name-lookup">
+                <input type="text" class="cinzel" id="guest-name-lookup"><br>
                 <button type="button" id="lookup-button" class="btn">Next</button>
             </div>
             <form action="https://docs.google.com/forms/d/e/1FAIpQLSfSzV8Wk3f-dlMXIX4eeiNn62UFk_mJphwi7-qd1U7ogsil6A/formResponse" method="POST" id="rsvpForm" style="display:none;">

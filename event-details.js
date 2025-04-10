@@ -289,6 +289,7 @@ class EventDetailsHandler {
         const toggleButton = document.createElement("button");
         toggleButton.textContent = "Show More Details";
         toggleButton.classList.add("btn", "btn-small");
+        toggleButton.style.marginTop = "5px";
         buttonContainer.appendChild(toggleButton);
         eventItem.appendChild(buttonContainer);
 
@@ -297,7 +298,7 @@ class EventDetailsHandler {
           if (detailsSection.classList.contains("hidden")) {
             toggleButton.textContent = "Show More Details";
           } else {
-            toggleButton.textContent = "Hide More Details";
+            toggleButton.textContent = "Hide Details";
           }
         });
       }
