@@ -133,7 +133,7 @@ button {
 }
 .image-left, .image-right {
   width: 150px;  /* Adjust size of images */
-  margin: 0px;
+  margin: var(--spacing-sm);
 }
 
 .image-left {
@@ -283,8 +283,7 @@ textarea {
 input[type="text"],
 input[type="number"],
 textarea {
-  width: 100%;
-  max-width: 400px;
+  width: calc(100% - (var(--spacing-md) * 2));
   padding: var(--spacing-sm);
   border: 1px solid var(--border-color);
   border-radius: 4px;
@@ -320,6 +319,10 @@ textarea:focus {
   word-wrap: break-word;
   overflow-wrap: break-word;
   box-sizing: border-box;
+}
+
+input#guest-name-lookup {
+  max-width: 400px;
 }
 
 label {
@@ -454,6 +457,7 @@ label {
 
 .event-item {
   border-left: 4px solid var(--primary-color);
+  margin: var(--spacing-md);
 }
 
 .party-list li {
