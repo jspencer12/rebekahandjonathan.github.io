@@ -151,7 +151,7 @@ class EventDetailsHandler {
       },
       Friday: {
         name: "Picnic in Provo",
-        date: "Friday, June 27, 2025, 5:00 PM - 7:00 PM",
+        date: "Friday, June 27, 2025, 6:00 PM - 8:00 PM",
         location: "South Fork Park, 4988 North South Fork Rd., Provo UT 84604",
         description:
           "A picnic in the gorgeous Utah mountains and a chance for relaxed chats before the wedding day.",
