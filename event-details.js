@@ -164,13 +164,13 @@ class EventDetailsHandler {
         name: "Family Luncheon",
         date: "Saturday, June 28, 2025, 11:00 AM",
         location: "Clarion Gardens, 463 E 100 N, Payson UT 84651",
-        description: "Family gathering before the sealing ceremony.",
+        description: "Family gathering before the sealing ceremony. Members of the family are strongly requested to adhere to color palette guidance.",
       },
       Sealing: {
         name: "Sealing Ceremony",
         date: "Saturday, June 28, 2025, 1:45 PM (arrive by 1:15 PM)",
         location: "Payson Utah Temple, 1494 S 930 W St, Payson UT 84651",
-        description: "Sacred marriage ceremony for the couple.",
+        description: "Sacred marriage ceremony for the couple. Photos will be taken outside the temple beginning around 2:30pm. Members of the family are strongly requested to adhere to color palette guidance.",
       },
       Reception: {
         name: "Wedding Reception",
@@ -185,11 +185,12 @@ class EventDetailsHandler {
         <h4>Dress Code</h4>
         <div class="dress-code-container">
           <div class="dress-code-text">
-            <p>Cocktail attire.</p> <p>The wedding party will be in black. <span class="black-bold">All other guests are invited to wear something in our sunset color palette pictured to the right.</span></p>
+            <p>Formal dress is requested.</p>
+            <p>The wedding party will be in black. If you'd like to coordinate with wedding colors, you're welcome to wear something from our sunset color palette pictured. For gentlemen, a black or dark suit with a tie in that scheme would look great. We will be so happy to see you no matter how you're dressed!</p>
             <p><strong>Weather: </strong>Outside temperatures in Springville, Utah range from 59°F at night to 85°F on a typical June day. However, the venue has air conditioning!</p>
           </div>
           <div class="color-palette-img">
-            <img src="images/webp/WeddingGuestColorsSunset.webp" alt="Sunset color palette for wedding guests" style="max-width: 100%; border-radius: 4px;">
+            <img src="images/webp/WeddingGuestColorsSunset.webp" alt="Sunset color palette for wedding guests" style="max-width: 200px; border-radius: 4px;">
           </div>
         </div>
         
