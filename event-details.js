@@ -156,6 +156,8 @@ class EventDetailsHandler {
         description:
           "A Swedish Midsommar themed picnic in the gorgeous Utah mountains and a chance for relaxed chats before the wedding day.",
         descriptionLong: `
+        <h4>Background</h4>
+        <p>Rebekah served as a missionary in Sweden 🇸🇪 where they celebrate the summer solstice with a "Midsommar" party that includes lots of flowers, dancing, and fun. While Midsommar is technically Tuesday, June 24, we want to spend a little extra time with our out of town friends we don't see very often, so we'd love for you to join us for a Midsommar themed picnic the evening before the wedding where we'll have some authentic Swedish food, flowers, and fun. (Save the dancing for Saturday!!)</p>
         <h4>Dress Code</h4>
         <p>Picnic chic. Think a light summer dress or linen shirt.</p>
         <p><strong>Weather: </strong>Average temperatures in Provo, Utah range from 61°F at night to 92°F on a typical June day.</p>`,
