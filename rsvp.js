@@ -97,6 +97,7 @@ class RSVPHandler {
     idahoOptions.forEach((option) => {
       option.addEventListener("change", (e) => {
         const idahoGuestsSection = document.getElementById("idaho-guests");
+        this.elements.fridayQuestion.style.display = e.target.value === "Yes" ? "none" : "block";
         if (idahoGuestsSection) {
           idahoGuestsSection.style.display =
             e.target.value === "Yes" ? "block" : "none";

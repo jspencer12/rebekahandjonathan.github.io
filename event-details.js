@@ -150,11 +150,11 @@ class EventDetailsHandler {
         </ul>`,
       },
       Friday: {
-        name: "Picnic in Provo",
+        name: "Midsommar Picnic in Provo",
         date: "Friday, June 27, 2025, 6:00 PM - 8:00 PM",
         location: "South Fork Park, 4988 North South Fork Rd., Provo UT 84604",
         description:
-          "A picnic in the gorgeous Utah mountains and a chance for relaxed chats before the wedding day.",
+          "A Swedish Midsommar themed picnic in the gorgeous Utah mountains and a chance for relaxed chats before the wedding day.",
         descriptionLong: `
         <h4>Dress Code</h4>
         <p>Picnic chic. Think a light summer dress or linen shirt.</p>
@@ -263,6 +263,13 @@ class EventDetailsHandler {
       eventTitle.textContent = eventInfo.name;
       eventTitle.classList.add("center");
       eventItem.appendChild(eventTitle);
+
+      if (trimmedEvent === "Friday" && events.includes("Idaho")) {
+        const eventSubtitle = document.createElement("p");
+        eventSubtitle.style.marginTop = "-10px";
+        eventSubtitle.innerHTML = "<center><i>(For those who can't make it to Idaho)</i></center>";
+        eventItem.appendChild(eventSubtitle);
+      }
 
       const eventDate = document.createElement("p");
       eventDate.innerHTML = `<strong>Date:</strong> ${eventInfo.date}`;
