@@ -127,6 +127,23 @@ class RSVPHandler {
         }
       });
     });
+
+    // Add event listener for Runner count event question to show/hide Runner count section
+    const californiaOptions = document.querySelectorAll(
+      'input[name="entry.687141928"]'
+    );
+    californiaOptions.forEach((option) => {
+      option.addEventListener("change", (e) => {
+        const runnerCountSection = document.getElementById("runner-count-question");
+        if (runnerCountSection) {
+          runnerCountSection.style.display =
+            e.target.value === "Yes" ? "block" : "none";
+          if (e.target.value === "No") {
+            runnerCountSection.querySelector("input").value = "";
+          }
+        }
+      });
+    });
   }
 
   // Check for a saved user in cookie
