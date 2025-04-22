@@ -250,14 +250,11 @@ class EventDetailsHandler {
     events.forEach((event) => {
       const trimmedEvent = event.trim();
 
-      // Check if we have details for this event
-      const eventInfo = eventDetails[trimmedEvent] || {
-        name: trimmedEvent,
-        date: "See invitation for details",
-        location: "See invitation for details",
-        description: "",
-        descriptionLong: "",
-      };
+      if (!eventDetails[trimmedEvent]) {
+        return; // Skip event if we don't have a card defined for it.
+      }
+
+      const eventInfo = eventDetails[trimmedEvent];
 
       const eventItem = document.createElement("div");
       eventItem.className = "event-item";

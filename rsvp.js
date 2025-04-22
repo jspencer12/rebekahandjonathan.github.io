@@ -127,6 +127,23 @@ class RSVPHandler {
         }
       });
     });
+
+    // Add event listener for Runner count event question to show/hide Runner count section
+    const californiaOptions = document.querySelectorAll(
+      'input[name="entry.687141928"]'
+    );
+    californiaOptions.forEach((option) => {
+      option.addEventListener("change", (e) => {
+        const runnerCountSection = document.getElementById("runner-count-question");
+        if (runnerCountSection) {
+          runnerCountSection.style.display =
+            e.target.value === "Yes" ? "block" : "none";
+          if (e.target.value === "No") {
+            runnerCountSection.querySelector("input").value = "";
+          }
+        }
+      });
+    });
   }
 
   // Check for a saved user in cookie
@@ -235,7 +252,14 @@ class RSVPHandler {
     e.preventDefault();
     if (this.state.submissionSuccessful) return;
 
+    const submitButton = this.elements.form.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    
     try {
+      submitButton.disabled = true;
+      console.log("Submitting form...");
+      submitButton.textContent = 'Submitting...';
+      await new Promise(resolve => setTimeout(resolve, 500));
       const formData = new FormData(this.elements.form);
       const formAction = this.elements.form.action;
 
@@ -245,6 +269,10 @@ class RSVPHandler {
         mode: "no-cors",
       });
 
+      console.log("Form submitted successfully");
+      submitButton.textContent = 'Submitted!';
+      await new Promise(resolve => setTimeout(resolve, 250));
+
       this.state.submissionSuccessful = true;
       this.updateUIForSubmission();
     } catch (error) {
@@ -253,6 +281,11 @@ class RSVPHandler {
         "Oops! Something went wrong submitting your RSVP. Please try again.";
       this.elements.message.style.display = "block";
       this.elements.form.style.display = "block";
+      submitButton.textContent = 'Error - Try Again';
+      setTimeout(() => {
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+      }, 2000);
     }
   }
 
