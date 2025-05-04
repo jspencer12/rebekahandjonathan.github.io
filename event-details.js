@@ -74,6 +74,30 @@ class EventDetailsHandler {
     return false;
   }
 
+  sortEvents(events) {
+    const eventOrder = ["Idaho", "Friday", "Family", "Sealing", "Reception", "California"];
+    
+    return events.sort((a, b) => {
+      const aIndex = eventOrder.indexOf(a);
+      const bIndex = eventOrder.indexOf(b);
+      
+      // If both events are in our predefined order, sort by that order
+      if (aIndex !== -1 && bIndex !== -1) {
+        return aIndex - bIndex;
+      }
+      // If only one event is in our order, prioritize it
+      else if (aIndex !== -1) {
+        return -1;
+      } else if (bIndex !== -1) {
+        return 1;
+      }
+      // For events not in our predefined order, sort alphabetically
+      else {
+        return a.localeCompare(b);
+      }
+    });
+  }
+
   displayGuestDetails(matchRecord) {
     if (!matchRecord || !matchRecord.guestRecord) {
       return;
@@ -245,8 +269,12 @@ class EventDetailsHandler {
     };
 
     // Process the event value(s)
-    const events = matchRecord.guestRecord.Event.split(";");
+    let events = matchRecord.guestRecord.Event.split(";");
     events.push("Reception", "California");
+    if (events.includes("Idaho")) {
+      events.push("Friday");
+    }
+    events = this.sortEvents(events);
     events.forEach((event) => {
       const trimmedEvent = event.trim();
 

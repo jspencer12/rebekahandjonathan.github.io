@@ -51,39 +51,8 @@ function parseRsvpCsv(csvContent) {
         .map((name) => name.trim())
         .filter((name) => name !== "");
 
-      // Split events by semicolon and sort in specific order
-      const eventOrder = {
-        Idaho: 1,
-        Friday: 2,
-        Family: 3,
-        Sealing: 4,
-        Reception: 5,
-        California: 6,
-      };
-      const sortedEvents = eventValue
-        .split(";")
-        .map((event) => event.trim())
-        .filter((event) => event)
-        .sort((a, b) => {
-          // If both events are in our predefined order, sort by that order
-          if (eventOrder[a] && eventOrder[b]) {
-            return eventOrder[a] - eventOrder[b];
-          }
-          // If only one event is in our order, prioritize it
-          else if (eventOrder[a]) {
-            return -1;
-          } else if (eventOrder[b]) {
-            return 1;
-          }
-          // For events not in our predefined order, sort alphabetically
-          else {
-            return a.localeCompare(b);
-          }
-        })
-        .join(";");
-
       guests.push({
-        Event: sortedEvents,
+        Event: eventValue,
         Party: partyArray,
       });
     } else {
@@ -255,31 +224,41 @@ function createSelectionDialog(options) {
   const modalBackdrop = document.createElement("div");
   modalBackdrop.className = "modal-backdrop";
   const modalContent = document.createElement("div");
-  modalContent.className = "modal-content";
-  const title = document.createElement("p");
+  modalContent.className = "event-details-section"; // Reuse event-details-section class
+  const title = document.createElement("h3");
   const prefix = foundExactMatch ? "Multiple matches" : "No exact match";
   title.textContent = `${prefix} found for input: ${searchValue}`;
-  title.className = "modal-title";
+  title.className = "center"; // Reuse center class
   modalContent.appendChild(title);
   const instructions = document.createElement("p");
   instructions.textContent = "Please select your name from the list below:";
-  instructions.className = "modal-instructions";
+  instructions.className = "form-note"; // Reuse form-note class
   modalContent.appendChild(instructions);
 
   // Add list of options
   const optionsList = document.createElement("div");
-  optionsList.className = "modal-options-list";
+  optionsList.className = "event-list"; // Reuse event-list class
   matchRecords.forEach((record) => {
-    const optionButton = document.createElement("button");
-    optionButton.className = "option-button";
+    const optionButton = document.createElement("div");
+    optionButton.className = "event-item"; // Reuse event-item class
+    optionButton.style.cursor = "pointer"; // Add pointer cursor
+    optionButton.style.transition = "background-color 0.3s ease"; // Match btn transition
+
+    // Add hover effect
+    optionButton.addEventListener("mouseenter", () => {
+      optionButton.style.backgroundColor = "#aaa"; // Match btn hover color
+    });
+    optionButton.addEventListener("mouseleave", () => {
+      optionButton.style.backgroundColor = ""; // Reset to default
+    });
 
     // Display name with party information
     const recordInfo = document.createElement("div");
     recordInfo.className = "option-info";
-    const nameText = document.createElement("strong");
+    const nameText = document.createElement("h4");
     nameText.textContent = record.matchedName;
-    nameText.className = "option-name";
-    const partyText = document.createElement("span");
+    nameText.className = "center"; // Reuse center class
+    const partyText = document.createElement("p");
 
     // Get party members without the matched name
     const otherPartyMembers = record.guestRecord.Party.filter(
@@ -289,7 +268,7 @@ function createSelectionDialog(options) {
     if (otherPartyMembers) {
       partyText.textContent = `Party with: ${otherPartyMembers}`;
     }
-    partyText.className = "option-event"; // Reusing the existing CSS class
+    partyText.className = "form-note"; // Reuse form-note class
 
     // Add to container
     recordInfo.appendChild(nameText);
@@ -298,41 +277,31 @@ function createSelectionDialog(options) {
 
     // Add click handler
     optionButton.addEventListener("click", () => {
-      // Remove the modal
+      onSelect(record);
       document.body.removeChild(modalBackdrop);
-
-      // Call the provided callback with the selected record
-      if (typeof onSelect === "function") {
-        onSelect(record);
-      }
     });
 
     optionsList.appendChild(optionButton);
   });
-
   modalContent.appendChild(optionsList);
 
-  // Add close/cancel button
+  // Add cancel button
   const cancelButton = document.createElement("button");
   cancelButton.textContent = "Cancel";
-  cancelButton.className = "cancel-button";
-
-  // Add click handler for cancel button
+  cancelButton.className = "btn btn-small"; // Reuse btn and btn-small classes
   cancelButton.addEventListener("click", () => {
     document.body.removeChild(modalBackdrop);
   });
-
   modalContent.appendChild(cancelButton);
-  modalBackdrop.appendChild(modalContent);
 
-  // Add click handler to the backdrop to close when clicked outside the content
+  // Add click handler to backdrop to close when clicking outside content
   modalBackdrop.addEventListener("click", (e) => {
-    // Check if the click was directly on the backdrop (not on any of its children)
     if (e.target === modalBackdrop) {
       document.body.removeChild(modalBackdrop);
     }
   });
 
+  modalBackdrop.appendChild(modalContent);
   document.body.appendChild(modalBackdrop);
 }
 

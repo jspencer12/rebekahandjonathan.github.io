@@ -608,14 +608,16 @@ label {
   display: block;
   overflow: hidden;
   box-sizing: border-box;
+  text-align: center;
 }
 
 .wide-image img {
   width: 100%;
-  max-width: 100%;
+  max-width: 600px;
   height: auto;
   display: block;
   padding: 0 var(--spacing-sm);
+  margin: 0 auto;
 }
 
 /* Event dates layout styling */
@@ -834,3 +836,17 @@ label {
     font-weight: 600;
     color: var(--primary-color);
   }
+
+/* Modal Dialog Styles */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1002; /* Higher than nav's z-index: 1001 */
+}
