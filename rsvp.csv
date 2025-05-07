@@ -1,41 +1,41 @@
 Form input,List,Party
-Alex Delbar,Idaho;Sealing,Alex Delbar;Dominique Delbar
-Billy Wade,Idaho;Sealing,Billy Wade;Brooklyn Wade;Baby Wade
-Riley Owen,Idaho;Sealing,Riley Owen
-Clayton Jorgensen,Idaho;Sealing,Clayton Jorgensen;Courtney Nelson
-Kevin Wadman,Idaho;Sealing,Kevin Wadman;Claire Thomas
+Alex Delbar,Idaho;Sealing;Wedding Party,Alex Delbar;Dominique Delbar
+Billy Wade,Idaho;Sealing;Wedding Party,Billy Wade;Brooklyn Wade;Baby Wade
+Riley Owen,Idaho;Sealing;Wedding Party,Riley Owen
+Clayton Jorgensen,Idaho;Sealing;Wedding Party,Clayton Jorgensen;Courtney Nelson
+Kevin Wadman,Idaho;Sealing;Wedding Party,Kevin Wadman;Claire Thomas
 Joshua Petersen,Idaho,Joshua Petersen;Jillian Petersen;Dalinar Petersen;Scarlett Petersen;Arthur Petersen
-Elise Jacobsen,Idaho;Sealing,Elise Jacobsen
-Nicole Jacobsen,Idaho;Sealing,Nicole Jacobsen
+Elise Jacobsen,Idaho;Sealing;Wedding Party,Elise Jacobsen
+Nicole Jacobsen,Idaho;Sealing;Wedding Party,Nicole Jacobsen
 Marissa Smith,Idaho,Marissa Smith;Sam Smith
 Diana Sanchez,Idaho,Diana Sanchez;Matthew Hall
-Emily Sine,Idaho,Emily Sine;Sam Waddoups
-Becca Schulz,Idaho,Becca Schulz;Richie Junquera
+Emily Sine,Idaho;Wedding Party,Emily Sine;Sam Waddoups
+Becca Schulz,Idaho;Wedding Party,Becca Schulz;Richie Junquera
 Lauren Jacobsen,Idaho;Family;Sealing,Brandon Jacobsen;Lauren Jacobsen;Leo Jacobsen;Ender Jacobsen
-Altai Yildirim,Idaho,Anyi Qian;Altai Yildirim
+Altai Yildirim,Idaho;Wedding Party,Anyi Qian;Altai Yildirim
 Lana Youngberg,Friday;Sealing,Lana Youngberg;Mike Youngberg
-Hannah Beeton,Family;Sealing,Hannah Beeton;Justin Beeton;Austin Beeton;Emma Beeton
-Billy Blincoe,Idaho;Sealing,Billy Blincoe;Elaine Blincoe
+Hannah Beeton,Family;Sealing;Wedding Party,Hannah Beeton;Justin Beeton;Austin Beeton;Emma Beeton
+Billy Blincoe,Idaho;Sealing;Wedding Party,Billy Blincoe;Elaine Blincoe
 Melissa Seipel,Idaho,Melissa Seipel
 Emily Elsmore,Family,Emily Elsmore
 Susan Jacobsen,Family;Sealing,Richard Jacobsen;Susan Jacobsen
 Rhese Westerlind,Family,Rhese Westerlind
 Ben Ladabaum,Idaho,Ben Ladabaum
-Ryan Arbon,Idaho;Sealing,Ryan Arbon;Megan Alkema
+Ryan Arbon,Idaho;Sealing;Wedding Party,Ryan Arbon;Megan Alkema
 Maren Jacobsen,Family,Maren Jacobsen
 Meghana Tera,Idaho,Meghana Tera
 Kaden Westerlind,Family,Kaden Westerlind;Alli Westerlind
 Todd and Shanon Kreuger,Friday;Sealing,Todd Kreuger;Shanon Kreuger
 Andie Kemmerle,Friday,Andie Kemmerle
-Jeremy Rios,Idaho;Sealing,Jeremy Rios;Kelsie Rios;Ryder Rios;Braden Rios;Kashton Rios
-Sam Rasmussen,Idaho;Sealing,Sam Rasmussen;Anna Osguthorpe
-Sameer Wagh,Idaho,Sameer Wagh;Sophia Bangaru
+Jeremy Rios,Idaho;Sealing;Wedding Party,Jeremy Rios;Kelsie Rios;Ryder Rios;Braden Rios;Kashton Rios
+Sam Rasmussen,Idaho;Sealing;Wedding Party,Sam Rasmussen;Anna Osguthorpe
+Sameer Wagh,Idaho;Wedding Party,Sameer Wagh;Sophia Bangaru
 Peter and Melissa Jacobsen,Family;Sealing,Peter Jacobsen;Melissa Jacobsen;Vanessa Jacobsen;Brynne Jacobsen;Eli Jacobsen;Anya Jacobsen;Kayla Jacobsen;Asher Jacobsen
-Jake Steadman,Family;Sealing,Jake Steadman;Aubrey Steadman;Joshua Steadman;Christopher Steadman
+Jake Steadman,Family;Sealing;Wedding Party,Jake Steadman;Aubrey Steadman;Joshua Steadman;Christopher Steadman
 Sofia Pesci,Idaho,Sofia Pesci
 Kristine Westerlind,Idaho;Friday;Family;Sealing,Kristine Westerlind;Victor Westerlind
 Lincoln Spencer,Family;Sealing,Lincoln Spencer;Katy Spencer;Vera Spencer;Dean Spencer;Theo Spencer
-Kyra Westerlind,Idaho;Family;Sealing,Kyra Westerlind
+Kyra Westerlind,Idaho;Family;Sealing;Wedding Party,Kyra Westerlind
 Alyssa Maruyama,Idaho,Alyssa Maruyama;Danny Maruyama
 Tiffany Fouch,Family,Tiffany Fouch;Brandon Fouch
 Connie Spencer,Idaho;Friday;Family;Sealing,Connie Spencer
@@ -45,7 +45,7 @@ Kalli Taylor,Idaho,Kalli Taylor
 Heidi Vawdrey ,Family;Sealing,Heidi Vawdrey;Alan Vawdrey;Rachel Vawdrey;Katie Vawdrey
 Amorita George,Idaho,Amorita George
 Erik and Michelle Westerlind ,Family;Sealing,Erik Westerlind;Michelle Westerlind;Madie Westerlind;Alli Westerlind
-John Patrick,Idaho;Sealing,John Patrick
+John Patrick,Idaho;Sealing;Wedding Party,John Patrick
 Ankith Kurapati,Idaho,Ankith Kurapati
 Miranda Westerlind ,Idaho;Family;Sealing,Chase Westerlind;Miranda Westerlind
 Sarah Sun,Idaho;Sealing,Sarah Kanell;Theo Kanell
@@ -290,7 +290,7 @@ Bryton Beesley,General,Bryton Beesley;Jamie Beesley
 Kaleo Roberts,General,Kaleo Roberts
 Sarah Jane Waggoner,Idaho,Sarah Jane Waggoner
 Cherisse Lunt,General,Cherisse Lunt;Chad Lunt
-Karin Håkansson,Idaho;Sealing,Karin Håkansson
+Karin Håkansson,Idaho;Sealing;Wedding Party,Karin Håkansson
 Emily and Spencer Maughan ,General,Emily Maughan;Spencer Maughan
 Blythe Beecroft,Idaho,Blythe Beecroft
 Bill Wade,General,Bill Wade;Katy Wade
@@ -299,7 +299,7 @@ Forrest Kelsey ,General,Forrest Kelsey;Diana Kelsey
 Don Romero,General,Don Romero;Michelle Romero
 Jannette Barnes,General,Jannette Barnes
 Randy Beard,General,Randy Beard
-Sierra Nichols,Idaho;Sealing,Sierra Nichols;Samuel Nichols;Elijah Nichols;Thomas Nichols
+Sierra Nichols,Idaho;Sealing;Wedding Party,Sierra Nichols;Samuel Nichols;Elijah Nichols;Thomas Nichols
 Sam Pedro,General,Sam Pedro;Becca Pedro
 Mei-lin Fong ,General,Mei-lin Fong
 Prateek Gautam,General,Prateek Gautam
@@ -343,7 +343,7 @@ Talmage Jones,General,Talmage Jones;Leica Jones
 Dave Thompson,General,Dave Thompson
 Angelica Pritchard,General,Angelica Pritchard
 Tal Segal,General,Tal Segal
-Jesse Borower,Idaho,Jesse Borower;Rae Perez
+Jesse Borower,Idaho;Wedding Party,Jesse Borower;Rae Perez
 Nate Otto,Idaho,Nate Otto
 Dana Knudsen,General,Dana Knudsen
 Melody Lawson ,General,Melody Lawson
@@ -371,7 +371,7 @@ Angela Zúñiga ,General,Angela Zúñiga;Ethan Zúñiga
 Margot Money,General,Margot Money
 Abram Moats,General,Abram Moats;Rebecca Russavage;Thalia Louise Moats Russavage
 Morgan Jenkins,General,Morgan Jenkins
-Riley Stevenson,Idaho;Sealing,Riley Stevenson;Alyssa Stevenson
+Riley Stevenson,Idaho;Sealing;Wedding Party,Riley Stevenson;Alyssa Stevenson
 Tyler Jacobs,General,Tyler Jacobs
 Joseph Bilal,General,Joseph Bilal
 Peter Mugemancuro,General,Peter Mugemancuro
@@ -424,11 +424,11 @@ Becca Steele,General,Talmage Steele;Becca Steele
 Zhenqi Huang,General,Zhenqi Huang;Ye Tu
 Bryson Loughmiller,General,Bryson Loughmiller
 Amelia Goldington,General,Amelia Goldington;Demir Goldington
-Jonathan Silva,Idaho;Sealing,Jonathan Silva
+Jonathan Silva,Idaho;Sealing;Wedding Party,Jonathan Silva
 Andrew Schamaun,Friday,Andrew Schamaun
 Thomas Pyne,Friday,Thomas Pyne
 Jessie Fan,General,Jessie Fan
-Samuel Sanft,Idaho;Sealing,Samuel Sanft;Maggie Sanft
+Samuel Sanft,Idaho;Sealing;Wedding Party,Samuel Sanft;Maggie Sanft
 Gabriela Reitz ,General,Gabriela Reitz
 Geoff Spencer ,General,June Ko;Geoff Spencer 
 James Winder,Family,James Winder
@@ -633,6 +633,7 @@ Craig Marx;Camille Marx,Manual,Craig Marx;Camille Marx
 Spencer Jorgensen,Manual,Spencer Jorgensen
 Levi Williams,Manual,Levi Williams
 Madeline Hawkins,Manual,Madeline Hawkins
+Paige Hosking,Manual,Paige Hosking
 Sam Spencer,Manual,Sam Spencer
 Ethan Vawdrey,Manual,Ethan Vawdrey
 Thomas Winder,Manual,Thomas Winder
@@ -735,3 +736,4 @@ Mike Roberts,Manual,Mike Roberts
 Phil Condie,Manual,Phil Condie
 Shobha R. Kothapalli,Manual,Shobha R. Kothapalli
 Trent McFadyn,Manual,Trent McFadyn
+Juan José Levrino;Mónica Palancar Levrino,Manual,Juan José Levrino;Mónica Palancar Levrino

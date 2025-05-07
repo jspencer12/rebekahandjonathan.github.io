@@ -194,9 +194,15 @@ class EventDetailsHandler {
       },
       Sealing: {
         name: "Sealing Ceremony",
-        date: "Saturday, June 28, 2025, 1:45 PM (arrive by 1:15 PM)",
+        date: "Saturday, June 28, 2025, 1:45 PM (attendees arrive by 1:15 PM)",
         location: "Payson Utah Temple, 1494 S 930 W St, Payson UT 84651",
-        description: "Sacred marriage ceremony for the couple. Photos will be taken outside the temple beginning around 2:30pm. Members of the family are strongly requested to adhere to color palette guidance.",
+        description: "Sacred marriage ceremony for the couple. Photos will be taken outside the temple beginning around 2:30pm. Members of the family are strongly requested to adhere to color palette guidance. Wedding party members not attending the sealing should arrive at the temple by 2:00 PM to recieve the couple after the ceremony.",
+        descriptionLong: `<h4>Ceremony Details</h4>
+        <p>The sealing ceremony will begin at 1:45 PM. Please arrive at the temple by 1:15 PM to ensure you have time to get settled.</p>
+        <p>Photos will be taken outside the temple beginning around 2:30 PM.</p>
+        
+        <h4>Dress Code</h4>
+        <p>Members of the family are strongly requested to adhere to the color palette guidance of red/orange/yellow</p>`,
       },
       Reception: {
         name: "Wedding Reception",
@@ -273,6 +279,20 @@ class EventDetailsHandler {
     events.push("Reception", "California");
     if (events.includes("Idaho")) {
       events.push("Friday");
+    }
+    if (events.includes("Wedding Party")) {
+      events.push("Sealing");
+      eventDetails.Sealing.descriptionLong = `<h4>Ceremony Details</h4>
+        <p>The sealing ceremony will begin at 1:45 PM. Please arrive by 1:15 PM to ensure you have time to get settled.</p>
+        <p>Photos will be taken outside the temple beginning around 2:30 PM.</p>
+        
+        <h4>For Wedding Party Members</h4>
+        <p>If you are not attending the sealing, please arrive at the temple by 2:00 PM to receive the couple after the ceremony.</p>
+        <p>Please review your role-specific information:</p>
+        <ul>
+          <li><a href="https://docs.google.com/document/d/17IjXq89OQIAEe41fMzJpmTQqJgpGnlPlTILfhp95Y64" target="_blank">Groomsman One Pager</a></li>
+          <li><a href="https://docs.google.com/document/d/1gz-sXUc7MpJzjgpwCz65NylRFuLuh8Ou2ZgBST5JZ90" target="_blank">Bridesmaid One Pager</a></li>
+        </ul>`;
     }
     events = this.sortEvents(events);
     events.forEach((event) => {
