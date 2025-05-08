@@ -121,6 +121,7 @@ class EventDetailsHandler {
         name: "Jonekah's Ranch Rodeo",
         date: "Wednesday, June 25 @ 12pm - Friday, June 27 @ 11am, 2025",
         location: "Sky Mountain Ranch, 4391 W 9000 S, Victor, ID 83455",
+        locationLink: "https://maps.app.goo.gl/MNcHmYpF87Zp4AAU6",
         description:
           "A few days together in Teton Valley, Idaho to create new memories together before the wedding.",
         descriptionLong: `<h4>Overview</h4>
@@ -177,6 +178,7 @@ class EventDetailsHandler {
         name: "Midsommar Picnic in Provo",
         date: "Friday, June 27, 2025, 6:00 PM - 8:00 PM",
         location: "South Fork Park, 4988 North South Fork Rd., Provo UT 84604",
+        locationLink: "https://maps.app.goo.gl/iYqPmh8UwS3qhee39",
         description:
           "A Swedish Midsommar themed picnic in the gorgeous Utah mountains and a chance for relaxed chats before the wedding day.",
         descriptionLong: `
@@ -190,16 +192,18 @@ class EventDetailsHandler {
         name: "Family Luncheon",
         date: "Saturday, June 28, 2025, 11:00 AM",
         location: "Clarion Gardens, 463 E 100 N, Payson UT 84651",
+        locationLink: "https://maps.app.goo.gl/SKugcTz3VjHRc4Ph8",
         description: "Family gathering before the sealing ceremony. Members of the family are strongly requested to adhere to color palette guidance.",
       },
       Sealing: {
         name: "Sealing Ceremony",
         date: "Saturday, June 28, 2025, 1:45 PM (attendees arrive by 1:15 PM)",
         location: "Payson Utah Temple, 1494 S 930 W St, Payson UT 84651",
-        description: "Sacred marriage ceremony for the couple. Photos will be taken outside the temple beginning around 2:30pm. Members of the family are strongly requested to adhere to color palette guidance. Wedding party members not attending the sealing should arrive at the temple by 2:00 PM to recieve the couple after the ceremony.",
+        locationLink: "https://maps.app.goo.gl/F552uG2R7tL3h48o8",
+        description: "Sacred marriage ceremony for the couple with family and wedding party photos to follow.",
         descriptionLong: `<h4>Ceremony Details</h4>
-        <p>The sealing ceremony will begin at 1:45 PM. Please arrive at the temple by 1:15 PM to ensure you have time to get settled.</p>
-        <p>Photos will be taken outside the temple beginning around 2:30 PM.</p>
+        <p>The sealing ceremony will begin at 1:45 PM. If you are attending the sealing, please arrive at the temple by 1:15 PM.</p>
+        <p>The couple will be exiting the temple between 2:15 PM and 2:30 PM at the South East corner of the temple. If you are family or wedding party members joining for photos but not attending the sealing, please arrive by 2:00 PM.</p>
         
         <h4>Dress Code</h4>
         <p>Members of the family are strongly requested to adhere to the color palette guidance of red/orange/yellow</p>`,
@@ -207,8 +211,8 @@ class EventDetailsHandler {
       Reception: {
         name: "Wedding Reception",
         date: "Saturday, June 28, 2025, 6:00 PM - 9:30 PM",
-        location:
-          "Hitching Post Event Venue, 1520 N Main Street, Springville UT 84663",
+        location: "Hitching Post Event Venue, 1520 N Main Street, Springville UT 84663",
+        locationLink: "https://maps.app.goo.gl/D4fStX69gv23hL7w5",
         description:
           "Open house style reception with food, dancing, and fun activities.",
         descriptionLong: `<h4>Overview</h4>
@@ -254,6 +258,7 @@ class EventDetailsHandler {
         name: "5k & Picnic Open House",
         date: "Saturday, July 19, 2025, 10:00 AM - 1:00 PM",
         location: "Holbrook Palmer Park, 150 Watkins Ave, Atherton, CA 94027",
+        locationLink: "https://maps.app.goo.gl/Xbk844zimNKGC4HJ6",
         description: "California celebration with optional 5k run and picnic.",
         descriptionLong: `<h4>Overview</h4>
         <p>Come jog a 5k with us or just bring your picnic blanket and join us for bagels in the park. For the 5k we are running 4 laps around the park, so feel free to join for however many laps you'd like or walk while the runners run. Kids are welcome!</p>
@@ -282,13 +287,8 @@ class EventDetailsHandler {
     }
     if (events.includes("Wedding Party")) {
       events.push("Sealing");
-      eventDetails.Sealing.descriptionLong = `<h4>Ceremony Details</h4>
-        <p>The sealing ceremony will begin at 1:45 PM. Please arrive by 1:15 PM to ensure you have time to get settled.</p>
-        <p>Photos will be taken outside the temple beginning around 2:30 PM.</p>
-        
-        <h4>For Wedding Party Members</h4>
-        <p>If you are not attending the sealing, please arrive at the temple by 2:00 PM to receive the couple after the ceremony.</p>
-        <p>Please review your role-specific information:</p>
+      eventDetails.Sealing.descriptionLong += `<h4>For Wedding Party Members</h4>
+        <p>Review your role-specific information:</p>
         <ul>
           <li><a href="https://docs.google.com/document/d/17IjXq89OQIAEe41fMzJpmTQqJgpGnlPlTILfhp95Y64" target="_blank">Groomsman One Pager</a></li>
           <li><a href="https://docs.google.com/document/d/1gz-sXUc7MpJzjgpwCz65NylRFuLuh8Ou2ZgBST5JZ90" target="_blank">Bridesmaid One Pager</a></li>
@@ -324,7 +324,7 @@ class EventDetailsHandler {
       eventItem.appendChild(eventDate);
 
       const eventLocation = document.createElement("p");
-      eventLocation.innerHTML = `<strong>Location:</strong> ${eventInfo.location}`;
+      eventLocation.innerHTML = `<strong>Location:</strong> ${eventInfo.location}&nbsp;&nbsp;~&nbsp;&nbsp;<a href="${eventInfo.locationLink}" target="_blank">Google Maps</a>`;
       eventItem.appendChild(eventLocation);
 
       const eventDescription = document.createElement("p");
