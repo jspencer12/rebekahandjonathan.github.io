@@ -280,13 +280,14 @@ class EventDetailsHandler {
     };
 
     // Process the event value(s)
-    let events = matchRecord.guestRecord.Event.split(";");
-    events.push("Reception", "California");
-    if (events.includes("Idaho")) {
-      events.push("Friday");
+    let events = new Set(matchRecord.guestRecord.Event.split(";"));
+    events.add("Reception");
+    events.add("California");
+    if (events.has("Idaho")) {
+      events.add("Friday");
     }
-    if (events.includes("Wedding Party")) {
-      events.push("Sealing");
+    if (events.has("Wedding Party")) {
+      events.add("Sealing");
       eventDetails.Sealing.descriptionLong += `<h4>For Wedding Party Members</h4>
         <p>Review your role-specific information:</p>
         <ul>
@@ -294,7 +295,7 @@ class EventDetailsHandler {
           <li><a href="https://docs.google.com/document/d/1gz-sXUc7MpJzjgpwCz65NylRFuLuh8Ou2ZgBST5JZ90" target="_blank">Bridesmaid One Pager</a></li>
         </ul>`;
     }
-    events = this.sortEvents(events);
+    events = this.sortEvents(Array.from(events));
     events.forEach((event) => {
       const trimmedEvent = event.trim();
 
