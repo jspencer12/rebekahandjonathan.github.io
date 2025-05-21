@@ -35,7 +35,7 @@ Jake Steadman,Family;Sealing;Wedding Party,Jake Steadman;Aubrey Steadman;Joshua 
 Sofia Pesci,Idaho,Sofia Pesci
 Kristine Westerlind,Idaho;Friday;Family;Sealing,Kristine Westerlind;Victor Westerlind
 Lincoln Spencer,Family;Sealing,Lincoln Spencer;Katy Spencer;Vera Spencer;Dean Spencer;Theo Spencer
-Kyra Westerlind,Idaho;Family;Sealing;Wedding Party,Kyra Westerlind
+Kyra Westerlind,Idaho;Family;Sealing;Wedding Party;Friday,Kyra Westerlind
 Alyssa Maruyama,Idaho,Alyssa Maruyama;Danny Maruyama
 Tiffany Fouch,Family,Tiffany Fouch;Brandon Fouch
 Connie Spencer,Idaho;Friday;Family;Sealing,Connie Spencer
@@ -290,7 +290,7 @@ Bryton Beesley,General,Bryton Beesley;Jamie Beesley
 Kaleo Roberts,General,Kaleo Roberts
 Sarah Jane Waggoner,Idaho,Sarah Jane Waggoner
 Cherisse Lunt,General,Cherisse Lunt;Chad Lunt
-Karin Håkansson,Idaho;Sealing;Wedding Party,Karin Håkansson
+Karin Håkansson,Idaho;Sealing;Wedding Party;Friday,Karin Håkansson
 Emily and Spencer Maughan ,General,Emily Maughan;Spencer Maughan
 Blythe Beecroft,Idaho,Blythe Beecroft
 Bill Wade,General,Bill Wade;Katy Wade
@@ -326,7 +326,7 @@ Charlie Wang,General,Charlie Wang
 Daniel Verdusco,General,Daniel Verdusco;Laura Gurrola
 Daniel Jones,General,Daniel Jones
 David Marble,General,David Marble
-Ryan Greenburg,General,Ryan Greenburg
+Ryan Greenburg,General;Idaho,Ryan Greenburg
 Jaime Fernandez Fisac,General,Jaime Fernandez Fisac
 Nate Hilton,General,Nate Hilton
 Elise Clark,General,Elise Clark
@@ -634,6 +634,10 @@ Spencer Jorgensen,Manual,Spencer Jorgensen
 Levi Williams,Manual,Levi Williams
 Madeline Hawkins,Manual,Madeline Hawkins
 Paige Hosking,Manual,Paige Hosking
+Jeff Wadman;Susan Wadman,Manual,Jeff Wadman;Susan Wadman
+Val Ault,Manual,Val Ault
+Philip Brazelton,Manual,Philip Brazelton
+Soonhee Blackburn,Manual,Soonhee Blackburn
 Sam Spencer,Manual,Sam Spencer
 Ethan Vawdrey,Manual,Ethan Vawdrey
 Thomas Winder,Manual,Thomas Winder
@@ -682,7 +686,6 @@ Laith Sahawneh,Manual,Laith Sahawneh
 Matthew Morin,Manual,Matthew Morin
 Samy Galvez,Manual,Samy Galvez
 Scott Walker,Manual,Scott Walker
-Marissa Webb Smith,Manual,Marissa Webb Smith
 Sulin Liu,Manual,Sulin Liu
 Jimmy Yang,Manual,Jimmy Yang
 Andrew Lan,Manual,Andrew Lan
