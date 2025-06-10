@@ -210,9 +210,9 @@ class RSVPHandler {
         const radioButtons = event.question.querySelectorAll(
           'input[type="radio"]'
         );
-        radioButtons.forEach((radio) => {
-          radio.required = true;
-        });
+        // radioButtons.forEach((radio) => {
+        //   radio.required = true;
+        // });
       } else {
         event.question.style.display = "none";
       }
