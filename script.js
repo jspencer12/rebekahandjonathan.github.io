@@ -35,7 +35,9 @@ function initCountdown() {
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
         // countdownElement.textContent = `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds until we say "I do"!`;
-        countdownElement.textContent = `${days} days until we say "I do"!`;
+        countdownElement.textContent = `${days} day${
+          days === 1 ? "" : "s"
+        } until we say "I do"!`;
     }
 
     // Initial update and set interval
