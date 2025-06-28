@@ -649,7 +649,7 @@ label {
     display: flex;
     /* gap: 0px; */
     justify-content: center;    /* centers children horizontally */
-    align-items: center;       /* aligns children vertically */
+    align-items: flex-start;    /* aligns children to top */
     flex-wrap: wrap;            /* allows wrapping on small screens */
   }
 
@@ -872,4 +872,124 @@ label {
   justify-content: center;
   align-items: center;
   z-index: 1002; /* Higher than nav's z-index: 1001 */
+}
+
+/* ===== RECIPE STYLES ===== */
+.recipe-container {
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+  align-self: flex-start;
+}
+
+.recipe-container h3 {
+  margin-top: 0;
+}
+
+.recipe-title {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.recipe-name {
+  font-family: var(--font-family-serif-headings);
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 2.2em;
+  letter-spacing: 1px;
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+}
+
+.recipe-subtitle {
+  font-family: var(--font-family-serif-headings);
+  color: var(--text-color);
+  font-weight: 400;
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.recipe-section {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.recipe-section:last-child {
+  border-bottom: none;
+}
+
+.recipe-section-title {
+  font-family: var(--font-family-serif-headings);
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: 0.5px;
+}
+
+.recipe-section h5 {
+  font-family: var(--font-family-serif-headings);
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 1em;
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+  letter-spacing: 0.3px;
+}
+
+.recipe-ingredients,
+.recipe-steps,
+.recipe-notes {
+  margin: 0;
+  padding-left: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.recipe-ingredients li,
+.recipe-notes li {
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.5;
+}
+
+.recipe-steps li {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
+}
+
+.ingredient-amount {
+  font-weight: 600;
+  color: var(--text-color);
+  font-family: var(--font-family-sans);
+  font-size: 0.95em;
+}
+
+.recipe-note {
+  font-style: italic;
+  color: var(--text-light);
+  margin-top: var(--spacing-sm);
+  margin-bottom: 0;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/* Mobile responsiveness for recipes */
+@media (max-width: 650px) {
+  .horizontal-stack {
+    flex-direction: column;
+  }
+  
+  .event-divider {
+    height: 1px;
+    width: 80%;
+    margin: var(--spacing-xl) auto;
+    align-self: stretch;
+  }
+  
+  .recipe-container {
+    max-width: 100%;
+    margin-bottom: var(--spacing-xl);
+  }
 }
