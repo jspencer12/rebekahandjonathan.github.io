@@ -649,7 +649,7 @@ label {
     display: flex;
     /* gap: 0px; */
     justify-content: center;    /* centers children horizontally */
-    align-items: flex-start;    /* aligns children to top */
+    align-items: center;    /* aligns children to top */
     flex-wrap: wrap;            /* allows wrapping on small screens */
   }
 
