@@ -193,7 +193,7 @@ const RecipeIndex = () => {
                 onClick={() => setShowFavorites(!showFavorites)}
                 className={`action-button favorites-button ${showFavorites ? 'active' : ''}`}
               >
-                Show only <span className="hide-on-mobile">favorited recipes </span><span className="heart-icon">{SYMBOLS.heart}</span>
+                Show <span className="hide-on-mobile">favorited recipes </span><span className="heart-icon">{SYMBOLS.heart}</span>
                 {favoritedRecipes.size > 0 && (
                   <span className="action-count-badge favorites-badge">
                     {favoritedRecipes.size}
@@ -205,7 +205,7 @@ const RecipeIndex = () => {
                 onClick={() => setShowMealPlan(!showMealPlan)}
                 className={`action-button meal-plan-button ${showMealPlan ? 'active' : ''}`}
               >
-                Show only <span className="hide-on-mobile">Meal Plan selections </span><span className="plus-icon">{SYMBOLS.plus}</span>
+                Show <span className="hide-on-mobile">Meal Plan selections </span><span className="plus-icon">{SYMBOLS.plus}</span>
                 {mealPlanRecipes.size > 0 && (
                   <span className="action-count-badge meal-plan-badge">
                     {mealPlanRecipes.size}
